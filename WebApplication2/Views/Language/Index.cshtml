@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@WebApplication2.Resources.HomeText.Choose  @WebApplication2.Resources.HomeText.Language :</h3>
+
+<ul>
+    <li>@Html.ActionLink("English", "Change", "Language", new { LanguageAbbrevation = "en" }, null)</li>
+    <li>@Html.ActionLink("Greek", "Change", "Language", new { LanguageAbbrevation = "el" }, null)</li>
+</ul>

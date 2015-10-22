@@ -1,0 +1,136 @@
+﻿
+@using System.Web.Mvc
+@using WebApplication2.Models
+
+@model IEnumerable<WebApplication2.Models.Images>
+
+
+@{
+    ViewBag.Title = "Home Page";
+    
+}
+
+
+<style>
+    .item {
+        background: #333;
+        text-align: center;
+        height: 300px !important;
+    }
+
+    h2 {
+        margin: 0;
+        color: #888;
+        padding-top: 100px;
+        font-size: 50px;
+    }
+</style>
+<div class="thumbnail">
+ 
+    <div id="DemoCarousel" class="carousel slide" data-interval="2000" data-ride="carousel">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#DemoCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#DemoCarousel" data-slide-to="1"></li>
+            <li data-target="#DemoCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="item active">
+               
+                <img src="~/Images/blue ruin.jpg" />
+                <h2>Slide 1</h2>
+                   
+                    <div class="carousel-caption">
+                    <h3>This is the First Label</h3>
+                    <p>The Content of the First Slide goes in here</p>
+            </div>
+            </div>
+            <div class="item">
+              
+                 <h2>Slide 2</h2>
+                <div class="carousel-caption">
+                    <h3>This is the Second Label</h3>
+                    <p>The Content of the second Slide goes in here</p>
+                </div>
+            </div>
+            <div class="item">
+                <h2>Slide 3</h2>
+                <div class="carousel-caption">
+                    <h3>This is the Third Label</h3>
+                    <p>The Content of the Third Slide goes in here</p>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel Controls -->
+        <a class="carousel-control left" href="#DemoCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#DemoCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    
+</div>
+    <div class="row">
+      
+        <div class="col-md-4">
+            <img class="img-row" src="~/Images/images1.jpg"  />
+            <h2>Getting started</h2>
+            
+            
+           
+            <p><a class="btn btn-default" title="General information" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+
+            <img class="img-row"src="~/Images/graffiti61402467283.jpg" />
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" title="Download more things" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+
+            <img id="img3" class="img-row" src="~/Images/slide_416506_5292084_free.jpg" />
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" title="Start the real game" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+        
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".btn btn-default").tooltipster();
+
+
+            $("#DemoCarousel").carousel();
+
+            //Carousel Controls
+            $(".left").click(function () {
+                $("#DemoCarousel").carousel('prev');
+            });
+            $(".right").click(function () {
+                $("#DemoCarousel").carousel('next');
+            });
+
+            //Carousel Indicators
+            $(".slide-1").click(function () {
+                $("#DemoCarousel").carousel(0);
+            });
+            $(".slide-2").click(function () {
+                $("#DemoCarousel").carousel(1);
+            });
+            $(".slide-3").click(function () {
+                $("#DemoCarousel").carousel(2);
+            });
+
+
+
+
+        });
+
+       
+       
+    </script>

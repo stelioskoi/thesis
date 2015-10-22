@@ -1,0 +1,86 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Stelios Koidakis site", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) @*sto css allazw to font size,mporei n ginei k apo jquery*@  
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Home, "Index", "Home")</li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.News <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.About, "About", "Home")</li>
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "About", "Home")</li> <!--den ekana view -->
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Works, "About", "Home")</li><!--den ekana view -->
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Philosophy, "About", "Home")</li><!--den ekana view -->
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li><!--den ekana view -->
+                            </ul>
+                        </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.Contact <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Contact, "Contact", "Home")</li>
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Offices, "Contact", "Home")</li><!--den ekana view -->
+                        </ul>
+                    </li>
+                    
+                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.More, "More", "Home")</li>
+                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Form, "ContactForm", "Contact")</li>
+                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Language, "Index", "Language")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+       @if (TempData["notice"] != null)
+       {
+        <h5>@TempData["notice"]</h5>
+
+       }
+         @RenderBody()
+        <hr />
+        
+        
+        <footer >
+            <p>Telephone number:+306981189423</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $(this).children("ul").slideDown('medium');
+            }, function(){
+                $(this).children("ul").slideUp('medium');
+            });
+
+            
+
+        });
+    </script>
+</body>
+</html>
