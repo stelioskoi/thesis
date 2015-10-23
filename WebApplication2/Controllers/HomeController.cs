@@ -42,8 +42,14 @@ namespace WebApplication2.Controllers
 
         public ActionResult More()
         {
-           
-            return View();
+
+            Map p = new Map();
+            List<Map> Li = new List<Map>();
+
+
+            Li = p.MapDisplay();
+            ViewData["MapDisplay"] = Li;
+            return View(Li);
         }
 
         public ActionResult Language()
