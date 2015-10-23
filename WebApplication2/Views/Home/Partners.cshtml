@@ -2,6 +2,7 @@
 @using WebApplication2.Models
 @model IEnumerable<WebApplication2.Models.Images>
 
+ 
 @{
     ViewBag.Title = "Partners";
     
@@ -27,6 +28,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
+                  
                     <img src="data:Images;base64,@System.Convert.ToBase64String(item.Image1)" />
                     
                 </td>
