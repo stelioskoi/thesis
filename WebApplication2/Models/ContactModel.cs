@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
-using System.Data.SqlClient;
-using System.Web.Configuration;
-using System.Configuration;
 
-namespace WebApplication2.Models 
+namespace WebApplication2.Models
 {
     public class ContactModel
     {
@@ -23,6 +16,13 @@ namespace WebApplication2.Models
 
         [Required(ErrorMessage = "Required")]
         public string Comments { get; set; }
+
+        
+
+        [Required(ErrorMessage = "Required")]
+        public HttpPostedFileBase file { get; set; }
+
+        public string filename { get; set; }
 
     }
 

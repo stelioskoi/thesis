@@ -11,7 +11,7 @@ namespace WebApplication2.Models
     {
         public SqlConnection con;
 
-        public bool Open(string Connection = "DefaultConnection")
+        public bool Open(string Connection = "Contacts")
         {
             con = new SqlConnection(@WebConfigurationManager.ConnectionStrings[Connection].ToString());
         //checking for sql connection
@@ -61,7 +61,7 @@ namespace WebApplication2.Models
 
         public int DataInsert(string sql)
         { int LastID = 0;
-            string query = sql + ";SELECT @@Identity;";
+            string query = sql  /*";SELECT @@Identity;"*/;
             try
             {
                 if (con.State.ToString() == "Open")

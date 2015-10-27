@@ -18,7 +18,7 @@ namespace WebApplication2.Models
         public byte[] Image1 { get; set; }
         
 
-        string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string constr = ConfigurationManager.ConnectionStrings["Contacts"].ConnectionString;
         Images p = null;
 
         public List<Images> IndexDisplay()

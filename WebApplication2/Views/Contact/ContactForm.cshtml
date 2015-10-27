@@ -1,50 +1,81 @@
 ﻿@model WebApplication2.Models.ContactModel
 
+
 @{
-    ViewBag.Title="ContactForm";
+    ViewBag.Title = "ContactForm";
 
 }
-@Scripts.Render("~/bundles/jquery")
+
 
 
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm("SaveDataContact","Contact", new { @id="Form"},FormMethod.Post))
+<button class="modal-opener">Open Dialog</button>
+<button class="modal-opener">Open Dialog</button>
+<div id="dialog-modal" title="Job apply form">
+@using (Html.BeginForm("SaveDataContact", "Contact", new { enctype = "multipart/form-data" }, FormMethod.Post))
 {
-    @Html.ValidationSummary();
-    @Html.AntiForgeryToken();
 
 
-    @Html.LabelFor(model=>model.Name)<br/>
-    @Html.TextBoxFor(model => model.Name)<br/>
-    @Html.ValidationMessageFor(model => model.Name)<br />
+     @Html.ValidationSummary();
+     @Html.AntiForgeryToken();
 
-    @Html.LabelFor(model=>model.Email)<br />
+
+    @Html.LabelFor(model => model.Name)<br/>
+    @Html.TextBoxFor(model => model.Name)<br />
+
+
+    @Html.LabelFor(model => model.Email)<br />
     @Html.TextBoxFor(model => model.Email)<br />
-    @Html.ValidationMessageFor(model => model.Email)<br />
 
-    @Html.LabelFor(model=>model.Comments)<br />
+    @Html.LabelFor(model => model.Comments)<br />
     @Html.TextAreaFor(model => model.Comments)<br />
     @Html.ValidationMessageFor(model => model.Comments)<br />
+
+    @Html.LabelFor(model => model.filename)<br />
+    @Html.TextBoxFor(model => model.filename, new { type = "file" })<br />
+    @Html.ValidationMessageFor(model => model.filename)<br />
     
-    <input type="file" name="FileUpload1" /><br />
-   
-    
+
     <button type="submit" value="Save" name="Save" >Submit</button>
 
-
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#submit").hover(function () {
-            $(this).css("background-color", "yellow");
-        }, function () {
-            $(this).css("background-color", "");
-        });
-    });
-</script>
-
-
 }
+
+</div>
+
+ 
+   <script >
+                $(document).ready(function () {
+                    $("#submit").hover(function () {
+                        $(this).css("background-color", "yellow");
+                    }, function () {
+                        $(this).css("background-color", "");
+                    });
+
+                  });
+             
+                $(function () {
+                    $("#dialog-modal").dialog({
+                        autoOpen: false,
+                        width: 600,
+                        height: 550,
+                        show: {
+
+                            duration: 500
+                        },
+                        hide: {
+
+                            duration: 500
+                        }
+
+                    });
+
+                    $(".modal-opener").click(function () {
+                        $("#dialog-modal").dialog("open");
+                    });
+                });
+
+            </script>
+
+    

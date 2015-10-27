@@ -16,7 +16,7 @@ namespace WebApplication2.Models
         public string Longitude { get; set; }
         public string Description { get; set; }
 
-        string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        string constr = ConfigurationManager.ConnectionStrings["Contacts"].ConnectionString;
         Map p = null;
         public List<Map> MapDisplay()
         {
