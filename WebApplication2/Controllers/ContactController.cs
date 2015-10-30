@@ -60,10 +60,10 @@ namespace WebApplication2.Controllers
                         D.Close();
 
 
-                }
+                    }
 
                 }
-                TempData["notice"] = "Your form was submitted .";
+                TempData["notice"] = "Your form was submitted ";
             }
             return RedirectToAction("ContactForm", "Contact");
 
