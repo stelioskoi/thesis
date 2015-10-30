@@ -59,6 +59,11 @@ namespace WebApplication2.Models
 
          }
 
+        internal int DataInsert(object p)
+        {
+            throw new NotImplementedException();
+        }
+
         public int DataInsert(string sql)
         { int LastID = 0;
             string query = sql  /*";SELECT @@Identity;"*/;

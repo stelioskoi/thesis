@@ -37,3 +37,44 @@ text-emphasis-color:black;
 }
 .fadein { position:relative; width:300px; height:300px; }
 .fadein img { position:absolute; left:0; top:0; }
+
+.error
+ {
+color: red;
+font-size: 10px;
+}
+ 
+.success
+{
+color: green;
+font-size: 10px;
+}
+
+.field-validation-error
+        {   
+            color: #ff0000;
+        }
+        
+        .field-validation-valid
+        {
+            display: none;
+        }
+        
+        .input-validation-error
+        {
+            border: 1px solid #ff0000 !important;
+            background-color: #ffeeee !important;
+        }
+        
+      
+        .validation-summary-errors
+        {
+            font-weight: bold !important;
+            color: #ff0000 !important;
+        }
+        
+        .validation-summary-valid
+        {
+           
+            display: none;
+        }

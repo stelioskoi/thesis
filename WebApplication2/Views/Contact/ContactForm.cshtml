@@ -6,76 +6,166 @@
 
 }
 
+<link href="~/Content/Site.css" rel="stylesheet" />
 
+<h2>Work for us</h2>
 
-<h2>@ViewBag.Title</h2>
+            <table class="table table-bordered table-hover table-condensed">
+                <thead >
+                     <tr>
+                        <td>Work Position Name</td>
+                        <td>Requirements</td>       
+                       <td style=" width:30%">General information</td>
+                         <td  >Apply now</td>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <tr>
+                        <td class="job_name">Frontend junior developer</td>
+                        <td>
+                            <ul>
+                                <li>+1 year of html experiece</li>
+                                <li>basic css experience</li>
+                                <li> 1 year of jquery experience</li>
+                            </ul>
+                        </td>
+                        <td><div>We are looking for a developer with the right mix of development and integration capabilities while being passionate about developing innovative applications and website solutions. This position will have an emphasis on back end development of new and existing features of multiple websites. - See more at: </div></td>
+                        <td><button class="modal-opener">Apply</button></td>
+                    </tr>
+                    <tr>
+                        <td class="job_name">asdasdas</td>
+                        <td>dasdsad</td>
+                        <td>222</td>
+                        <td><button class="modal-opener">Apply</button></td>
+                    </tr>
+                    
+                 </tbody>
+            </table>
 
-
-<button class="modal-opener">Open Dialog</button>
-<button class="modal-opener">Open Dialog</button>
-<div id="dialog-modal" title="Job apply form">
-@using (Html.BeginForm("SaveDataContact", "Contact", new { enctype = "multipart/form-data" }, FormMethod.Post))
+<div class="control-group" id="dialog-modal" title="Job apply form">
+@using (Html.BeginForm("SaveDataContact", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
 
-     @Html.ValidationSummary();
+     @*@Html.ValidationSummary();*@
      @Html.AntiForgeryToken();
 
+        @Html.HiddenFor(model => model.nameofjob, new { id = "njob" })
 
-    @Html.LabelFor(model => model.Name)<br/>
-    @Html.TextBoxFor(model => model.Name)<br />
-
-
-    @Html.LabelFor(model => model.Email)<br />
-    @Html.TextBoxFor(model => model.Email)<br />
-
-    @Html.LabelFor(model => model.Comments)<br />
-    @Html.TextAreaFor(model => model.Comments)<br />
-    @Html.ValidationMessageFor(model => model.Comments)<br />
-
-    @Html.LabelFor(model => model.filename)<br />
-    @Html.TextBoxFor(model => model.filename, new { type = "file" })<br />
-    @Html.ValidationMessageFor(model => model.filename)<br />
+        @Html.LabelFor(model => model.FirstName)<br />
+        @Html.TextBoxFor(model => model.FirstName,new {  id = "inputError" })
+        @Html.ValidationMessageFor(model => model.FirstName)<br />
     
-
-    <button type="submit" value="Save" name="Save" >Submit</button>
-
-}
-
-</div>
-
  
-   <script >
-                $(document).ready(function () {
-                    $("#submit").hover(function () {
-                        $(this).css("background-color", "yellow");
-                    }, function () {
-                        $(this).css("background-color", "");
-                    });
-
-                  });
-             
-                $(function () {
-                    $("#dialog-modal").dialog({
-                        autoOpen: false,
-                        width: 600,
-                        height: 550,
-                        show: {
-
-                            duration: 500
-                        },
-                        hide: {
-
-                            duration: 500
-                        }
-
-                    });
-
-                    $(".modal-opener").click(function () {
-                        $("#dialog-modal").dialog("open");
-                    });
-                });
-
-            </script>
-
+        @Html.LabelFor(model => model.LastName)<br />
+        @Html.TextBoxFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName)<br />
     
+   
+        @Html.LabelFor(model => model.Age)<br />
+        @Html.EditorFor(model => model.Age)
+        @Html.ValidationMessageFor(model => model.Age)<br />
+   
+  
+        @Html.LabelFor(model => model.Email)<br />
+        @Html.TextBoxFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)<br />
+  
+        @Html.LabelFor(model => model.Comments)<br />
+        @Html.TextAreaFor(model => model.Comments)
+        @Html.ValidationMessageFor(model => model.Comments)<br />
+    
+
+
+        <label for="file">Upload your Cv:</label>
+        @Html.TextBoxFor(m => m.file, new { type = "file", name = "file", id = "fileupload" })
+        @Html.ValidationMessageFor(model => model.file)<br />
+        <label id="fileStatus" Text="" class="error"></label><br />
+        <input type="submit" name="Submit" id="Submit" value="Upload"  />
+
+        }
+
+    </div>
+
+
+           <script >
+                        $(document).ready(function () {
+                            $("#submit").hover(function () {
+                                $(this).css("background-color", "yellow");
+                            }, function () {
+                                $(this).css("background-color", "");
+                            });
+                            
+
+                            $("#fileupload").change(function () {
+ 
+                                // Get the file upload control file extension
+                                var ext = $(this).val().split('.').pop().toLowerCase();
+ 
+                                // Create array with the files extensions to upload
+                                var fileListToUpload = new Array('pdf', 'txt', 'doc', 'docx', 'xls','xlsx');
+ 
+                                //Check the file extension is in the array.               
+                                var isValidFile = $.inArray(ext, fileListToUpload);
+ 
+                                // isValidFile gets the value -1 if the file extension is not in the list.  
+                                if (isValidFile == -1) {
+                                    ShowMessage('Please select a valid file of type pdf/txt/doc/docx/xls/xlsx.', 'error');
+                                    $(this).replaceWith($(this).val('').clone(true));
+                                }
+                                else {
+                                    // Restrict the file size to 10 MB.
+                                    if ($(this).get(0).files[0].size > (1024 * 1024 * 10)) {
+                                        ShowMessage('File size should not exceed 10MB.', 'error');
+                                        $(this).replaceWith($(this).val('').clone(true));
+                                    }
+                                    else {
+                                        ShowMessage('Thank you for selecting a valid file.', 'success');
+                                    }
+                                }
+
+                        });
+                            function ShowMessage(message, type) {
+
+                                if (type == 'success') {
+                                    $("#fileStatus").removeClass('error');
+                                    $("#fileStatus").addClass('success');
+                                }
+                                else if (type == 'error') {
+                                    $("#fileStatus").removeClass('success');
+                                    $("#fileStatus").addClass('error');
+                                }
+                                $("#fileStatus").text(message);
+                            }
+
+                        });
+                        $(function () {
+                            $("#dialog-modal").dialog({
+                                autoOpen: false,
+                                width: 600,
+                                height: 550,
+                                show: {
+
+                                    duration: 500
+                                },
+                                hide: {
+
+                                    duration: 500
+                                }
+
+                            });
+
+                            $(".modal-opener").click(function () {
+                                $("#dialog-modal").dialog("open");
+                            });
+                        });
+
+                        $(".modal-opener").on("click", function () {
+                            var jobname = $(this).closest("tr").find('td:eq(0)').text();
+                            $('#njob').val(jobname);
+                        })
+
+               
+                    </script>
+
+       
