@@ -58,7 +58,7 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        public ActionResult Partners()
+        public ActionResult History()
         {
 
             Images p = new Images();
@@ -70,7 +70,11 @@ namespace WebApplication2.Controllers
             return View(Li);
         }
 
-       
+        public ActionResult Partners()
+        {
+
+            return View();
+        }
 
     }
 

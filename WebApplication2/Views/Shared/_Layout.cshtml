@@ -7,17 +7,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css"
-          rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+   <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     @Styles.Render("~/Content/css")
      @Scripts.Render("~/bundles/modernizr")
      @Styles.Render("~/Content/themes/base/css")
-    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-  
+
+    @*<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css"
+        rel="stylesheet" type="text/css" />*@
+    @*@Scripts.Render("~/bundles/jqueryui")*@
+    @*<script src="~/Scripts/jquery-2.1.4.min.js"></script>*@
+
+
     <script type="text/javascript">
         $(document).ready(function () {
             $(".dropdown").hover(
@@ -31,7 +33,8 @@
     
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="navbar navbar-inverse ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,10 +51,10 @@
                         <li class="dropdown"><a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.News <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.About, "About", "Home")</li>
-                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "About", "Home")</li> <!--den ekana view -->
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li> <!--den ekana view -->
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Works, "About", "Home")</li><!--den ekana view -->
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Philosophy, "About", "Home")</li><!--den ekana view -->
-                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li><!--den ekana view -->
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "History", "Home")</li><!--den ekana view -->
                             </ul>
                         </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.Contact <b class="caret"></b></a>

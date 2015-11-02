@@ -749,8 +749,9 @@
     <Content Include="Views\Contact\ContactForm.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Language\Index.cshtml" />
-    <Content Include="Views\Home\Partners.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
     <Content Include="Scripts\jquery.validate.globalize.min.js.map" />
+    <Content Include="Views\Home\Partners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

@@ -6,8 +6,15 @@
 
 }
 
-<link href="~/Content/Site.css" rel="stylesheet" />
-
+@*<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+@if (Session["notice"] != null)
+{
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Well done!</strong> You successfully applied  <a href="#" class="alert-link">on this job pla</a>.
+    </div>
+}
 <h2>Work for us</h2>
 
             <table class="table table-bordered table-hover table-condensed">
@@ -30,63 +37,75 @@
                             </ul>
                         </td>
                         <td><div>We are looking for a developer with the right mix of development and integration capabilities while being passionate about developing innovative applications and website solutions. This position will have an emphasis on back end development of new and existing features of multiple websites. - See more at: </div></td>
-                        <td><button class="modal-opener">Apply</button></td>
+                        <td><button type="button" class="btn btn-success" id="jobbut" data-toggle="modal" data-target="#myModal">Apply</button></td>
                     </tr>
                     <tr>
                         <td class="job_name">asdasdas</td>
                         <td>dasdsad</td>
                         <td>222</td>
-                        <td><button class="modal-opener">Apply</button></td>
+                        <td><button type="button" class="btn btn-success" id="jobbut" data-toggle="modal" data-target="#myModal">Apply</button></td>
                     </tr>
                     
                  </tbody>
             </table>
 
-<div class="control-group" id="dialog-modal" title="Job apply form">
-@using (Html.BeginForm("SaveDataContact", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+<div class="modal" id="myModal" @*title="Job apply form"*@role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+    @using (Html.BeginForm("SaveDataContact", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
 
 
-     @*@Html.ValidationSummary();*@
-     @Html.AntiForgeryToken();
+                    @*@Html.ValidationSummary();*@
+                      @Html.AntiForgeryToken();
 
-        @Html.HiddenFor(model => model.nameofjob, new { id = "njob" })
+                    @Html.HiddenFor(model => model.nameofjob, new { id = "njob" })
 
-        @Html.LabelFor(model => model.FirstName)<br />
-        @Html.TextBoxFor(model => model.FirstName,new {  id = "inputError" })
-        @Html.ValidationMessageFor(model => model.FirstName)<br />
-    
- 
-        @Html.LabelFor(model => model.LastName)<br />
-        @Html.TextBoxFor(model => model.LastName)
-        @Html.ValidationMessageFor(model => model.LastName)<br />
-    
-   
-        @Html.LabelFor(model => model.Age)<br />
-        @Html.EditorFor(model => model.Age)
-        @Html.ValidationMessageFor(model => model.Age)<br />
-   
-  
-        @Html.LabelFor(model => model.Email)<br />
-        @Html.TextBoxFor(model => model.Email)
-        @Html.ValidationMessageFor(model => model.Email)<br />
-  
-        @Html.LabelFor(model => model.Comments)<br />
-        @Html.TextAreaFor(model => model.Comments)
-        @Html.ValidationMessageFor(model => model.Comments)<br />
-    
+                    @Html.LabelFor(model => model.FirstName)<br />
+                    @Html.TextBoxFor(model => model.FirstName, new { id = "inputError", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FirstName)<br />
 
 
-        <label for="file">Upload your Cv:</label>
-        @Html.TextBoxFor(m => m.file, new { type = "file", name = "file", id = "fileupload" })
-        @Html.ValidationMessageFor(model => model.file)<br />
-        <label id="fileStatus" Text="" class="error"></label><br />
-        <input type="submit" name="Submit" id="Submit" value="Upload"  />
+                    @Html.LabelFor(model => model.LastName)<br />
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LastName)<br />
 
-        }
 
+                    @Html.LabelFor(model => model.Age)<br />
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Age)<br />
+
+
+                    @Html.LabelFor(model => model.Email)<br />
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email)<br />
+
+                    @Html.LabelFor(model => model.Comments)<br />
+                    @Html.TextAreaFor(model => model.Comments, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Comments)<br />
+
+
+
+                    <label for="file">Upload your Cv:</label>
+                    @Html.TextBoxFor(m => m.file, new { type = "file", name = "file", id = "fileupload", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.file)<br />
+                    <label id="fileStatus" Text="" class="error"></label><br />
+                    <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-success" />
+
+    }
+                </div>
+
+
+
+            </div>
+        </div>
     </div>
-
+   
 
            <script >
                         $(document).ready(function () {
@@ -139,28 +158,28 @@
                             }
 
                         });
-                        $(function () {
-                            $("#dialog-modal").dialog({
-                                autoOpen: false,
-                                width: 600,
-                                height: 550,
-                                show: {
+                        //$(function () {
+                        //    $(".modal").dialog({
+                        //        autoOpen: false,
+                        //        width: 600,
+                        //        height: 550,
+                        //        show: {
 
-                                    duration: 500
-                                },
-                                hide: {
+                        //            duration: 500
+                        //        },
+                        //        hide: {
 
-                                    duration: 500
-                                }
+                        //            duration: 500
+                        //        }
 
-                            });
+                        //    });
 
-                            $(".modal-opener").click(function () {
-                                $("#dialog-modal").dialog("open");
-                            });
-                        });
+                        //    $(".btn-success").click(function () {
+                        //        $(".modal").dialog("open");
+                        //    });
+                        //});
 
-                        $(".modal-opener").on("click", function () {
+                        $("#jobbut").on("click", function () {
                             var jobname = $(this).closest("tr").find('td:eq(0)').text();
                             $('#njob').val(jobname);
                         })

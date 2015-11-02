@@ -1,12 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,7 +27,7 @@ textarea {
 
 .navbar
  {
-background-color:white;
+background-color:#404040 ;
 text-emphasis-color:black;
 }
 
@@ -78,3 +80,9 @@ font-size: 10px;
            
             display: none;
         }
+
+#ph1 {
+    background-image: url('../Images/images1.jpg');
+   
+}
+

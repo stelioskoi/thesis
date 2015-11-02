@@ -11,6 +11,7 @@ namespace WebApplication2.Controllers
     {
        public CodeDB D = new CodeDB();
 
+
         public ActionResult Index()
         {
             
@@ -63,7 +64,7 @@ namespace WebApplication2.Controllers
                     }
 
                 }
-                TempData["notice"] = "Your form was submitted ";
+                Session[ "notice"]=1;
             }
             return RedirectToAction("ContactForm", "Contact");
 

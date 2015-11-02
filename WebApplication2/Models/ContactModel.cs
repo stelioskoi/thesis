@@ -25,9 +25,8 @@ namespace WebApplication2.Models
         public string Comments { get; set; }
 
 
-        //[Required(ErrorMessage = "Required")]
-        //[FileSize(10240, ErrorMessage = "Required")]
-        public HttpPostedFileBase file { get; set; }
+        [Required(ErrorMessage = "Required")]
+       public HttpPostedFileBase file { get; set; }
 
 
         public string nameofjob { get; set; }
