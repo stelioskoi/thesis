@@ -58,13 +58,14 @@ namespace WebApplication2.Controllers
                             ModelState.AddModelError("Error", "Save Error");
                         }
 
-                        D.Close();
+                       
 
 
                     }
 
                 }
                 Session[ "notice"]=1;
+                D.Close();
             }
             return RedirectToAction("ContactForm", "Contact");
 

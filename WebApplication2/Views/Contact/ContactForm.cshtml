@@ -5,7 +5,7 @@
     ViewBag.Title = "ContactForm";
 
 }
-
+@Scripts.Render("~/bundles/jqueryval")
 @*<link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />*@
 @if (Session["notice"] != null)
@@ -15,7 +15,7 @@
         <strong>Well done!</strong> You successfully applied  <a href="#" class="alert-link">on this job pla</a>.
     </div>
 }
-<h2>Work for us</h2>
+<h2 class="page-header">Job places</h2>
 
             <table class="table table-bordered table-hover table-condensed">
                 <thead >

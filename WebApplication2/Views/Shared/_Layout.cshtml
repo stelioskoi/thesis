@@ -1,20 +1,18 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-   <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     @Styles.Render("~/Content/css")
-     @Scripts.Render("~/bundles/modernizr")
-     @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery")
 
-    @*<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css"
+    @**<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css"
         rel="stylesheet" type="text/css" />*@
     @*@Scripts.Render("~/bundles/jqueryui")*@
     @*<script src="~/Scripts/jquery-2.1.4.min.js"></script>*@
@@ -30,25 +28,38 @@
             });
         });
     </script>
-    
+
 </head>
 <body>
+   
+    <div style="background-color:white" class="navbar navbar-inverse ">
+        <div>
+            
+        </div>
+        <div id="social">
+            <div class="twitter-slide social-slide" onclick="window.location='http://www.twitter.com';"></div>
+            <div class="facebook-slide social-slide "onclick="window.location='http://www.facebook.com';"></div>
+            <div class="google-slide social-slide" onclick="window.location = 'http://plus.google.com';"></div>
+            <div class="linkedin-slide social-slide" onclick="window.location = 'http://linkedin.com';"></div>
+        </div>
 
-    <div class="navbar navbar-inverse ">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Stelios Koidakis site", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) @*sto css allazw to font size,mporei n ginei k apo jquery*@  
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Home, "Index", "Home")</li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.News <b class="caret"></b></a>
+    </div>
+        <div class="navbar navbar-inverse ">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Stelios Koidakis site", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) @*sto css allazw to font size,mporei n ginei k apo jquery*@
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Home, "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.News <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.About, "About", "Home")</li>
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li> <!--den ekana view -->
@@ -57,52 +68,53 @@
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "History", "Home")</li><!--den ekana view -->
                             </ul>
                         </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.Contact <b class="caret"></b></a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.Contact <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                            <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Contact, "Contact", "Home")</li>
+                                <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Contact, "Contact", "Home")</li>
                                 <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Offices, "Contact", "Home")</li><!--den ekana view -->
-                        </ul>
-                    </li>
-                    
-                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.More, "More", "Home")</li>
-                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Form, "ContactForm", "Contact")</li>
-                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Language, "Index", "Language")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            
+                            </ul>
+                        </li>
+
+                        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.More, "More", "Home")</li>
+                        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Form, "ContactForm", "Contact")</li>
+                        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Language, "Index", "Language")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-       @if (TempData["notice"] != null)
-       {
-        <h5>@TempData["notice"]</h5>
+        <div class="container body-content">
+            @if (TempData["notice"] != null)
+            {
+                <h5>@TempData["notice"]</h5>
 
-       }
-         @RenderBody()
-        <hr />
-        
-        
-        <footer >
-            <p>Telephone number:+306981189423</p>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+            }
+            @RenderBody()
+            <hr />
 
-  
-    @Scripts.Render("~/bundles/bootstrap") 
-   @RenderSection("scripts", required: false)
-    
-    @*<script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
-          rel="stylesheet" type="text/css" />*@
-    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>*@
-   
-    
-    
-    
-        
+
+            <footer>
+                <p>Telephone number:+306981189423</p>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+        @*<script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+            <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
+                  rel="stylesheet" type="text/css" />*@
+        @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>*@
+
+
+
+
+
 </body>
 </html>

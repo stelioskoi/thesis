@@ -72,8 +72,14 @@ namespace WebApplication2.Controllers
 
         public ActionResult Partners()
         {
+            Crew k = new Crew();
+            List<Crew> Lic = new List<Crew>();
 
-            return View();
+
+            Lic = k.IndexDisplay();
+            ViewData["IndexDisplay"] = Lic;
+            return View(Lic);
+            
         }
 
     }

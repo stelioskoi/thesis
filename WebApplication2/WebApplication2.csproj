@@ -260,6 +260,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CodeDB.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\Crew.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Images.cs" />
     <Compile Include="Models\Map.cs" />
@@ -321,12 +322,19 @@
     <Content Include="Images\blue ruin.jpg" />
     <Content Include="Images\3.jpg" />
     <Content Include="Images\4.jpg" />
+    <Content Include="Images\fb.jpg" />
     <Content Include="Images\graffiti61402467283.jpg" />
+    <Content Include="Images\images %281%29.jpg" />
+    <Content Include="Images\images.jpg" />
     <Content Include="Images\images1.jpg" />
+    <Content Include="Images\link.png" />
     <Content Include="Images\linked-in-logo1.gif" />
     <Content Include="Images\2.jpg" />
+    <Content Include="Images\plus.jpg" />
+    <Content Include="Images\sherlock_in__progress_by_fionabasta-d7lodo8.jpg" />
     <Content Include="Images\slide_416506_5292084_free.jpg" />
     <Content Include="Images\1.jpg" />
+    <Content Include="Images\twitter.jpg" />
     <Content Include="Images\wd2.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -335,6 +343,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Images\wellness.jpg" />
+    <Content Include="Images\Zuckerberg.jpg" />
+    <Content Include="Images\а_компот.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jmelosegui.googlemap.js" />
