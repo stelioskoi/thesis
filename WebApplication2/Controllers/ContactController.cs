@@ -36,47 +36,58 @@ namespace WebApplication2.Controllers
 
             if (ModelState.IsValid)
             {
-                if (Request.Files.Count > 0)
+
+                int check= D.DataInsert("SELECT COUNT * FROM table_form WHERE Email = '" + f.Email + "')");
+                if (check>0)      /* provlima gia to checkkk*/
                 {
-                    var file = Request.Files[0];
-               
-                    if (file != null && file.ContentLength > 0)
+                    if (Request.Files.Count > 0)
                     {
-                        var fileName = Path.GetFileName(file.FileName);
-                        var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
-                        file.SaveAs(path);
-                   
-                
-                D.Open();
-                int i = D.DataInsert("INSERT INTO table_form(First_Name,Last_Name,Age,Email,Comments,File_Name,Job_Title) VALUES ('" + f.FirstName + "','" + f.LastName + "','" + f.Age + "','" + f.Email + "','" + f.Comments + "','" + file.FileName + "','" + f.nameofjob + "')");
-                        if (i > 0)
-                        {
-                            ModelState.AddModelError("Success", "Save Success");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("Error", "Save Error");
-                        }
+                        var file = Request.Files[0];
 
-                       
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(file.FileName);
+                            var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                            file.SaveAs(path);
 
+
+                            D.Open();
+                            int i = D.DataInsert("INSERT INTO table_form(First_Name,Last_Name,Age,Email,Comments,File_Name,Job_Title) VALUES ('" + f.FirstName + "','" + f.LastName + "','" + f.Age + "','" + f.Email + "','" + f.Comments + "','" + file.FileName + "','" + f.nameofjob + "')");
+                            if (i > 0)
+                            {
+                                ModelState.AddModelError("Success", "Save Success");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("Error", "Save Error");
+                            }
+
+
+
+                            Session["notice"] = 1;
+                        }
 
                     }
 
+                    D.Close();
                 }
-                Session[ "notice"]=1;
-                D.Close();
-            }
-            return RedirectToAction("ContactForm", "Contact");
+                else
+                {
 
+                    Session["check_db"] = 1;
+                }
+            }
             
+
+        
+            return RedirectToAction("ContactForm", "Contact");
         }
 
 
-        // public void InsertContact(string name, string email, string comments)
-        //{
 
-        //}
+
+
+
         public ActionResult Submit()
         {
             return View();

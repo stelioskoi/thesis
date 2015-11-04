@@ -56,7 +56,7 @@
                     @Html.ActionLink("Stelios Koidakis site", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) @*sto css allazw to font size,mporei n ginei k apo jquery*@
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav ">
                         <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Home, "Index", "Home")</li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.News <b class="caret"></b></a>
@@ -80,28 +80,28 @@
                         <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Form, "ContactForm", "Contact")</li>
                         <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Language, "Index", "Language")</li>
                     </ul>
-                    @Html.Partial("_LoginPartial")
+                    @*@Html.Partial("_LoginPartial")*@
 
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        @*<div class="container body-content">
             @if (TempData["notice"] != null)
             {
                 <h5>@TempData["notice"]</h5>
 
             }
-            @RenderBody()
-            <hr />
+            
+            <hr />*@
 
 
-            <footer>
-                <p>Telephone number:+306981189423</p>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
+        @*</div>*@
+    @RenderBody()
 
-
+    <footer>
+        <p>Telephone number:+306981189423</p>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
 

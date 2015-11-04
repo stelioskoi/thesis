@@ -344,8 +344,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Images\wellness.jpg" />
-    <Content Include="Images\Zuckerberg.jpg" />
-    <Content Include="Images\а_компот.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jmelosegui.googlemap.js" />
@@ -355,6 +353,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.flipshow.js" />
     <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.af-ZA.js" />
     <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.af.js" />
     <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.am-ET.js" />
@@ -717,6 +716,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\markerclusterer.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
