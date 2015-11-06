@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Web.Configuration;
+using System.Data;
+using System.Text;
 
 namespace WebApplication2.Models
 {
@@ -59,10 +61,7 @@ namespace WebApplication2.Models
 
          }
 
-        internal int DataInsert(object p)
-        {
-            throw new NotImplementedException();
-        }
+    
 
         public int DataInsert(string sql)
         { int LastID = 0;
@@ -72,10 +71,10 @@ namespace WebApplication2.Models
                 if (con.State.ToString() == "Open")
                 {
                     SqlCommand cmd = new SqlCommand(query, con);
-                    LastID = this.ToInt(cmd.ExecuteScalar());
+                    LastID = ToInt(cmd.ExecuteScalar());
                 }
 
-                return this.ToInt(LastID);
+                return ToInt(LastID);
             }
 
             catch
@@ -85,6 +84,32 @@ namespace WebApplication2.Models
         }
 
 
+        public bool DataSearch(string sql)
+        {
+            
+            string query = sql  /*";SELECT @@Identity;"*/;
+
+            using (con)
+            {
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    if (rd != null)
+                    {
+                        rd.Close();
+                        rd.Dispose();
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            return false;
+
+
+
+        }
 
 
     }

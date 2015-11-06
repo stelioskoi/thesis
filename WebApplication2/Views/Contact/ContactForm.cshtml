@@ -8,14 +8,14 @@
 @Scripts.Render("~/bundles/jqueryval")
 @*<link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />*@
-@if (Session["notice"] != null)
+@if (TempData["notice"] != null)
 {
     <div class="alert alert-dismissible alert-success">
         <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Well done!</strong> You successfully applied  <a href="#" class="alert-link">on this job pla</a>.
+        <strong>Well done!</strong> You successfully applied  <a href="#" class="alert-link">on this job </a>.
     </div>
 }
-@if (Session["check_db"] != null)
+@if (TempData["check_db"] != null)
 {
     <div class="alert alert-dismissible alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>

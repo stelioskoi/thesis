@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.IO;
 using System.Web;
 using System.Net.Mail;
-
+using System.Threading.Tasks;
 
 namespace WebApplication2.Controllers
 {
@@ -27,7 +27,7 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
-       
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -36,9 +36,10 @@ namespace WebApplication2.Controllers
 
             if (ModelState.IsValid)
             {
-
-                int check= D.DataInsert("SELECT COUNT * FROM table_form WHERE Email = '" + f.Email + "')");
-                if (check>0)      /* provlima gia to checkkk*/
+                D.Open();
+                bool check = D.DataSearch("SELECT * FROM table_form WHERE Email = '" + f.Email + "' ");
+                D.Close();
+                if (check == false)      /* provlima gia to checkkk*/
                 {
                     if (Request.Files.Count > 0)
                     {
@@ -62,9 +63,7 @@ namespace WebApplication2.Controllers
                                 ModelState.AddModelError("Error", "Save Error");
                             }
 
-
-
-                            Session["notice"] = 1;
+                           
                         }
 
                     }
@@ -74,16 +73,14 @@ namespace WebApplication2.Controllers
                 else
                 {
 
-                    Session["check_db"] = 1;
+                    TempData["check_db"] = 1;
                 }
             }
-            
 
-        
+
+
             return RedirectToAction("ContactForm", "Contact");
         }
-
-
 
 
 
