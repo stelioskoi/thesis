@@ -63,7 +63,7 @@ namespace WebApplication2.Controllers
                                 ModelState.AddModelError("Error", "Save Error");
                             }
 
-                           
+                            TempData["notice"] = 1;
                         }
 
                     }
