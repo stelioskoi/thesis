@@ -35,7 +35,7 @@ namespace WebApplication2.Models
                     p.Name = Convert.ToString(rd.GetSqlValue(1));
                     p.Latitude = Convert.ToString(rd.GetSqlValue(2));
                     p.Longitude = Convert.ToString(rd.GetSqlValue(3));
-                    p.Description= Convert.ToString(rd.GetSqlValue(4));
+                    p.Description = Convert.ToString(rd.GetSqlValue(4));
                     MapList.Add(p);
 
                 }

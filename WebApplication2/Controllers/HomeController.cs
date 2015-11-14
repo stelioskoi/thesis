@@ -15,8 +15,8 @@ namespace WebApplication2.Controllers
     
     public class HomeController : Controller
     {
-       
-
+        public CodeDB D = new CodeDB();
+        
 
         public ActionResult Index()
         {
@@ -81,10 +81,40 @@ namespace WebApplication2.Controllers
             return View(Lic);
             
         }
+        public ActionResult Offices()
+        {
+
+            return View();
+        }
+
+
+
+        public ActionResult Philosophy()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveData(Conmodel f)
+        {
+
+            if (ModelState.IsValid)
+            {
+                D.Open();
+                int i = D.DataInsert("INSERT INTO conus(First,Last,Email,Phone,Comments) VALUES ('" + f.FirstName + "','" + f.LastName + "','" + f.Email + "','" + f.Phone + "','" + f.Comments + "')");
+                
+               
+                TempData["notice"] = 1;
+            }
+            D.Close();
+            return RedirectToAction("Offices", "Home");
+        }
+        
+        
 
     }
 
-   
-
-  
+    
 }

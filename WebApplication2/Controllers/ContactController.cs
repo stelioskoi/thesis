@@ -39,7 +39,7 @@ namespace WebApplication2.Controllers
                 D.Open();
                 bool check = D.DataSearch("SELECT * FROM table_form WHERE Email = '" + f.Email + "' ");
                 D.Close();
-                if (check == false)      /* provlima gia to checkkk*/
+                if (check == false)      
                 {
                     if (Request.Files.Count > 0)
                     {

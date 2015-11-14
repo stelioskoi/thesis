@@ -1,0 +1,54 @@
+﻿@model WebApplication2.Models.User
+
+@{
+    ViewBag.Title = "Index";
+}
+@Scripts.Render("~/bundles/jqueryval")
+<div class="modal" id="myModal" @*title="Job apply form"*@ role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               
+                <div class="modal-body">
+                    @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+                    {
+                    @Html.ValidationSummary(true, "Login failed. Check your login details.");
+                    <div>
+                        <fieldset>
+                            <legend>Login</legend>
+                            @Html.AntiForgeryToken()
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.UserName)
+                            </div>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(model => model.UserName)
+                                @Html.ValidationMessageFor(model => model.UserName)
+                            </div>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Password)
+                            </div>
+                            <div class="editor-field">
+                                @Html.PasswordFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+
+                            <input type="submit" value="Log In" />
+                        </fieldset>
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+            $(document).ready(function(){
+
+                $('#myModal').modal({ backdrop: 'static', keyboard: false })
+            });
+</script>

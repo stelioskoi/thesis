@@ -1,7 +1,9 @@
-﻿body {
-    padding-top: 20px;
+﻿
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    margin-top:60px;
     
-  
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -29,6 +31,7 @@ textarea {
  {
 background-color:#404040 ;
 text-emphasis-color:black;
+
 }
 
 .img-row
@@ -123,13 +126,6 @@ font-size: 10px;
     
     background-image: url('../Images/link.png');
 }
-/*#imrow {
-    
-    
-    margin-left:10%;
-    margin-right:10%;
-    margin-top:15%;
-}*/
 
 #panrow 
 {
@@ -257,3 +253,12 @@ font-size: 10px;
 	opacity: 1;
 }
 
+footer
+ {
+   margin-top:20px;
+   padding-top:20px;
+   border-top: 1px solid #dddddd;
+}
+.adminbut  {
+    color:white;
+}
