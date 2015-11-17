@@ -1,4 +1,8 @@
-﻿
+﻿<style>
+    body {
+        margin-top:7%;
+    }
+</style>
 @using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
@@ -10,8 +14,9 @@
         </li>
         <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
         <li >@Html.ActionLink("Post a job", "Index", "Dashboard")</li>
-        <li>@Html.ActionLink("Jobs", "Jobs", "Dashboard")</li>
+        <li>@Html.ActionLink("Applies", "Jobs", "Dashboard")</li>
         <li>@Html.ActionLink("Messages", "Messages", "Dashboard")</li>
+        <li>@Html.ActionLink("Map", "Map", "Dashboard")</li>
      </ul>
     
 

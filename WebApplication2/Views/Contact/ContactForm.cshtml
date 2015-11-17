@@ -1,4 +1,5 @@
-﻿@model WebApplication2.Models.ContactModel
+﻿@using WebApplication2.Models
+@model WebApplication2.Models.ContactModel
 
 
 @{
@@ -23,8 +24,7 @@
     </div>
 }
 <h2 class="page-header">Job places</h2>
-
-        <table class="table table-striped table-bordered">
+     <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <td>Work Position Name</td>
@@ -33,29 +33,24 @@
                     <td>Apply now</td>
                 </tr>
             </thead>
+
             <tbody>
+@foreach (var item in ViewData["JobDisplay"] as List<postjob>)
+{
                 <tr>
-                    <td class="job_name">Frontend junior developer</td>
+                    <td class="job_name">@item.Name</td>
                     <td>
-                        <ul>
-                            <li>+1 year of html experiece</li>
-                            <li>basic css experience</li>
-                            <li> 1 year of jquery experience</li>
-                        </ul>
+                      @Html.Raw(@item.Req)
                     </td>
-                    <td><div>We are looking for a developer with the right mix of development and integration capabilities while being passionate about developing innovative applications and website solutions. This position will have an emphasis on back end development of new and existing features of multiple websites. - See more at: </div></td>
-                    <td><button type="button" class="btn btn-success" id="jobbut" data-toggle="modal" data-target="#myModal">Apply</button></td>
-                </tr>
-                <tr>
-                    <td class="job_name">asdasdas</td>
-                    <td>dasdsad</td>
-                    <td>222</td>
-                    <td><button type="button" class="btn btn-success" id="jobbut" data-toggle="modal" data-target="#myModal">Apply</button></td>
+                    <td>@Html.Raw(@item.Des)</td>
+                    <td><button type="button" class="btn btn-success"  data-toggle="modal" data-target="#myModal">Apply</button></td>
                 </tr>
 
+}
             </tbody>
+
         </table>
-     
+
     <div class="modal" id="myModal" @*title="Job apply form"*@ role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -165,29 +160,10 @@
             }
 
         });
-        //$(function () {
-        //    $(".modal").dialog({
-        //        autoOpen: false,
-        //        width: 600,
-        //        height: 550,
-        //        show: {
+       
 
-        //            duration: 500
-        //        },
-        //        hide: {
-
-        //            duration: 500
-        //        }
-
-        //    });
-
-        //    $(".btn-success").click(function () {
-        //        $(".modal").dialog("open");
-        //    });
-        //});
-
-        $("#jobbut").on("click", function () {
-            var jobname = $(this).closest("tr").find('td:eq(0)').text();
+        $("button").on("click", function () {
+            var jobname = $(this).closest('tr').find("td:first-child").text();
             $('#njob').val(jobname);
         })
 

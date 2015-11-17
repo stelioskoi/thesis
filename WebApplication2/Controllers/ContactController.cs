@@ -4,6 +4,7 @@ using System.IO;
 using System.Web;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace WebApplication2.Controllers
 {
@@ -25,6 +26,11 @@ namespace WebApplication2.Controllers
         // GET: Contact
         public ActionResult ContactForm()
         {
+            postjob p = new postjob();
+            List<postjob> Li = new List<postjob>();
+            Li = p.JobDisplay();
+            ViewData["JobDisplay"] = Li;
+            //ViewBag.MyList = Li;
             return View();
         }
 
@@ -47,8 +53,8 @@ namespace WebApplication2.Controllers
 
                         if (file != null && file.ContentLength > 0)
                         {
-                            var fileName = Path.GetFileName(file.FileName);
-                            var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                            f.nameofcv = Path.GetFileName(file.FileName);
+                            var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), f.nameofcv);
                             file.SaveAs(path);
 
 

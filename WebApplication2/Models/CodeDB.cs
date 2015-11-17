@@ -61,7 +61,28 @@ namespace WebApplication2.Models
 
          }
 
-    
+        public int DataDelete(string sql)
+        {
+            int LastID = 0;
+            string query = sql  /*";SELECT @@Identity;"*/;
+            try
+            {
+                if (con.State.ToString() == "Open")
+                {
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    LastID = ToInt(cmd.ExecuteScalar());
+                }
+
+                return ToInt(LastID);
+            }
+
+            catch
+            {
+                return 0;
+            }
+        }
+
+       
 
         public int DataInsert(string sql)
         { int LastID = 0;

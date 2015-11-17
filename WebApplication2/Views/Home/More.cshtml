@@ -78,23 +78,25 @@
 
                 var data = @Html.Raw(Json.Encode(Model));
                    
-                 // statikaaaa   { "PlaceName": "My house", "OpeningHours": "unlimited", "GeoLong": "24.418074", "GeoLat": "40.939261", "Comments": "Here lives the myth" }, ];
+                 // static  { "PlaceName": "My house", "OpeningHours": "unlimited", "GeoLong": "24.418074", "GeoLat": "40.939261", "Comments": "Here lives the myth" }, ];
 
 
                 // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
                 $.each(data, function (i, item) {
                          var marker = new google.maps.Marker({
-                             'position': new google.maps.LatLng(item.Latitude, item.Longitude),
-                        'map': map,
-                        'title': item.Name
+                         'position': new google.maps.LatLng(item.Latitude, item.Longitude),
+                         'map': map,
+                         'title': item.Name
                     });
 
                      // Make the marker-pin blue!
                      marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-
+                  
                     // put in some information about each json object - in this case, the opening hours.
+                     var text=item.Description;
+                     var decoded = $('div').html(text).text();
                      var infowindow = new google.maps.InfoWindow({
-                         content: "<div class='infoDiv'><h2>" + item.Name + "</h2>" +  "</h4></div><h3>" + item.Description + "</h3></div>"
+                         content: "<h2>" + item.Name + "</h2 >" + "<div>" + decoded+ "</div>" 
                     });
 
                     // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!

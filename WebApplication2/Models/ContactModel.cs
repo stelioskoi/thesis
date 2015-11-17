@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebApplication2.Models
 {
@@ -34,9 +35,12 @@ namespace WebApplication2.Models
         [Required(ErrorMessage = "Required")]
        public HttpPostedFileBase file { get; set; }
 
-
+        
         public string nameofjob { get; set; }
-       
+
+        
+        public string nameofcv { get; set; }
+
 
         string constr = ConfigurationManager.ConnectionStrings["Contacts"].ConnectionString;
         ContactModel p = null;
@@ -61,7 +65,8 @@ namespace WebApplication2.Models
                     p.Age = (int)rd["Age"];
                     p.Email = Convert.ToString(rd.GetSqlValue(4));
                     p.Comments = Convert.ToString(rd.GetSqlValue(5));
-                    p.nameofjob = Convert.ToString(rd.GetSqlValue(6));
+                    p.nameofcv = Convert.ToString(rd.GetSqlValue(6));
+                    p.nameofjob = Convert.ToString(rd.GetSqlValue(7));
                     JobList.Add(p);
 
                 }

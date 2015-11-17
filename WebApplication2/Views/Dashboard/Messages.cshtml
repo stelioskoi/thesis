@@ -1,8 +1,57 @@
-﻿
+﻿@using WebApplication2.Models
+@model WebApplication2.Models.Conmodel
 @{
     ViewBag.Title = "Messages";
 }
-
+<style>
+    a {
+        color: white;
+    }
+</style>
 <h2>Messages</h2>
 
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th></th>
 
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var item in ViewData["ConDisplay"] as List<Conmodel>)
+           {
+             <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.Comments</td>
+                 <td><button type="button" class="btn btn-group-sm" data-toggle="modal" data-target="#myModal">Delete</button></td>
+             </tr>
+            <div class="modal" id="myModal" @*title="Job apply form"*@ role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Are you sure you want to delete this place?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <button class="btn btn-danger" type="button" data-dismiss="modal" aria-hidden="true">No,i am not</button>
+                            <button class="btn btn-success">@Html.ActionLink("Delete", "DeleteMessage", new { id = item.Comments  })</button>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+           }
+        </tbody>
+    </table>
+</div>
