@@ -93,10 +93,9 @@
                      marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
                   
                     // put in some information about each json object - in this case, the opening hours.
-                     var text=item.Description;
-                     var decoded = $('div').html(text).text();
+                     
                      var infowindow = new google.maps.InfoWindow({
-                         content: "<h2>" + item.Name + "</h2 >" + "<div>" + decoded+ "</div>" 
+                         content: "<h2>" + item.Name + "</h2 >" + "<div>" + item.Description+ "</div>" 
                     });
 
                     // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!

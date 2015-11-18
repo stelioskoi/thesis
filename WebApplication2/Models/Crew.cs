@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,12 +12,27 @@ namespace WebApplication2.Models
     {
         SqlConnection con = new SqlConnection();
         List<Crew> CrewList = new List<Crew>();
+
+        [Required(ErrorMessage = "Required")]
         public string fname { get; set; }
+
+        [Required(ErrorMessage = "Required")]
         public string sname { get; set; }
+
+        [Required(ErrorMessage = "Required")]
         public string job{ get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [RegularExpression(@"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$", ErrorMessage = "Must be valid email")]
         public string email { get; set; }
+
+       
         public string info { get; set; }
+
+        
         public byte[] image { get; set; }
+
+            
 
         string constr = ConfigurationManager.ConnectionStrings["Contacts"].ConnectionString;
         Crew p = null;

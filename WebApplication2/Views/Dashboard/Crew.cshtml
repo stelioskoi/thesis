@@ -1,0 +1,58 @@
+﻿@using WebApplication2.Models
+@model WebApplication2.Models.Crew
+
+@{
+    ViewBag.Title = "Crew";
+}
+<style>
+.row {
+        margin-left:5%;
+    }
+</style>
+<h2>Crew</h2>
+
+<div class="row">
+    <div class="col-lg-4">
+        @using (Html.BeginForm("SaveNewPartner", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            
+            @Html.AntiForgeryToken();
+
+            @*@Html.HiddenFor(model => model.nameofjob, new { id = "njob" })*@
+
+                        @Html.LabelFor(model => model.fname)<br />
+                        @Html.TextBoxFor(model => model.fname, new { id = "inputError", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fname)<br />
+
+
+                        @Html.LabelFor(model => model.sname)<br />
+                        @Html.TextBoxFor(model => model.sname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.sname)<br />
+
+
+                        @Html.LabelFor(model => model.job)<br />
+                        @Html.EditorFor(model => model.job, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.job)<br />
+
+
+                        @Html.LabelFor(model => model.email)<br />
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.email)<br />
+
+                        @Html.LabelFor(model => model.info)<br />
+                        @Html.TextAreaFor(model => model.info, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.info)<br />
+
+
+
+                        <label for="file">Upload your Cv:</label>
+                        @Html.TextBoxFor(m => m.image, new { type = "file", name = "file", id = "Fileupload1", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.image)<br />
+                        <label id="fileStatus" Text="" class="error"></label><br />
+                        <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-success" />
+
+        }
+     </div>
+    </div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Web.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace WebApplication2.Controllers
         public ActionResult Index()
         {
 
+            postjob p = new postjob();
+            List<postjob> Li = new List<postjob>();
+            Li = p.JobDisplay();
+            ViewData["JobDisplay"] = Li;
             return View();
         }
 
@@ -30,7 +35,7 @@ namespace WebApplication2.Controllers
 
             if (ModelState.IsValid)
             {
-                
+
 
                 D.Open();
                 int i = D.DataInsert("INSERT INTO Job_table(Name,Req,Gen) VALUES ('" + f.Name + "','" + f.Req + "','" + f.Des + "')");
@@ -42,17 +47,17 @@ namespace WebApplication2.Controllers
                 {
                     ModelState.AddModelError("Error", "Save Error");
                 }
-                
+
                 D.Close();
             }
 
-            
+
             return RedirectToAction("Index", "Dashboard");
         }
 
         public ActionResult Messages()
         {
-            Conmodel p = new Conmodel(); 
+            Conmodel p = new Conmodel();
             List<Conmodel> Li = new List<Conmodel>();
             Li = p.ConDisplay();
             ViewData["ConDisplay"] = Li;
@@ -65,7 +70,7 @@ namespace WebApplication2.Controllers
             List<ContactModel> Li = new List<ContactModel>();
             Li = p.JobDisplay();
             ViewData["JobDisplay"] = Li;
-            return View(Li);
+            return View();
         }
 
         public ActionResult Download(string id)
@@ -75,12 +80,12 @@ namespace WebApplication2.Controllers
 
         }
 
-        public ActionResult Delete(string id, string name)
+        public ActionResult DeleteApplier(ContactModel f)
         {
-            string fullPath = Request.MapPath("~/App_Data/uploads/" + name);
+            string fullPath = Request.MapPath("~/App_Data/uploads/" + f.nameofcv);
             System.IO.File.Delete(fullPath);
             D.Open();
-            int i = D.DataDelete("DELETE FROM table_form WHERE  Email= '" + id + "' ");
+            int i = D.DataDelete("DELETE FROM table_form WHERE  Email= '" + f.Email + "' ");
             D.Close();
 
             if (i > 0)
@@ -92,12 +97,12 @@ namespace WebApplication2.Controllers
                 ModelState.AddModelError("Error", "Save Error");
             }
             return RedirectToAction("Jobs", "Dashboard");
-    }
+        }
 
-        public ActionResult DeleteMap(string id, string name)
+        public ActionResult DeleteMap(Map f)
         {
             D.Open();
-            int i = D.DataDelete("DELETE FROM MapGoTable WHERE  Latitude= '" + id + "' AND Longitude='" + name + "' ");
+            int i = D.DataDelete("DELETE FROM MapTable WHERE  Latitude= '" + f.Latitude + "' AND  Longitude='" + f.Longitude + "' ");
             D.Close();
 
             if (i > 0)
@@ -111,10 +116,27 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Map", "Dashboard");
         }
 
-        public ActionResult DeleteMessage(string id)
+        public ActionResult DeleteJob(postjob f)
         {
             D.Open();
-            int i = D.DataDelete("DELETE FROM conus WHERE  Comments= '" + id + "'  ");
+            int i = D.DataDelete("DELETE FROM Job_table WHERE  Name= '" + f.Name + "'  ");
+            D.Close();
+
+            if (i > 0)
+            {
+                ModelState.AddModelError("Success", "Save Success");
+            }
+            else
+            {
+                ModelState.AddModelError("Error", "Save Error");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+
+        public ActionResult DeleteMessage(Conmodel f)
+        {
+            D.Open();
+            int i = D.DataDelete("DELETE FROM conus WHERE  Comments= '" + f.Comments + "'  ");
             D.Close();
 
             if (i > 0)
@@ -143,9 +165,9 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                D.Open();   
+                D.Open();
                 int j = D.DataInsert("INSERT INTO MapTable(Name,Latitude,Longitude,Description) VALUES ('" + f.Name + "','" + f.Latitude + "','" + f.Longitude + "','" + f.Description + "')");
-                
+
                 if (j > 0)
                 {
                     ModelState.AddModelError("Success", "Save Success");
@@ -157,13 +179,62 @@ namespace WebApplication2.Controllers
 
                 D.Close();
             }
-                return RedirectToAction("More", "Home");
+            return RedirectToAction("More", "Home");
         }
 
+
+        public ActionResult Crew()
+        {
+
+
+            return View();
+        }
+
+        public ActionResult SaveNewPartner(Crew f)
+        {
+
+            if (ModelState.IsValid)
+            {
+                //D.Open();
+                //bool check = D.DataSearch("SELECT * FROM table_form WHERE Email = '" + f.Email + "' ");
+                //D.Close();
+                //if (check == false)
+                //{
+
+                
+
+                D.Open();
+                int i = D.DataInsert("INSERT INTO Crew(First_Name,Last_name,Job,Email,Info,Image) VALUES ('" + f.fname + "','" + f.sname + "','" + f.job + "','" + f.email + "','" + f.info + "','" + documentBytes + "')");
+                if (i > 0)
+                {
+                    ModelState.AddModelError("Success", "Save Success");
+                }
+                else
+                {
+                    ModelState.AddModelError("Error", "Save Error");
+                }
+
+                //}
+
+                D.Close();
+            }
+            else
+            {
+
+                TempData["check_db"] = 1;
+            }
+
+
+
+
+            return RedirectToAction("Partners", "Home");
+        }
+
+    
     }
 
 
-    }
+}
 
 
     

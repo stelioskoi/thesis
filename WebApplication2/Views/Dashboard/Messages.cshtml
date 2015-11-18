@@ -31,27 +31,42 @@
                 <td>@item.LastName</td>
                 <td>@item.Email</td>
                 <td>@item.Phone</td>
-                <td>@item.Comments</td>
-                 <td><button type="button" class="btn btn-group-sm" data-toggle="modal" data-target="#myModal">Delete</button></td>
+                <td class="com">@item.Comments</td>
+                 <td><button type="button" class=" btn-group-sm" data-toggle="modal" data-target="#myModal">Delete</button></td>
              </tr>
-            <div class="modal" id="myModal" @*title="Job apply form"*@ role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
+          
 
-                            <h4 class="modal-title">Are you sure you want to delete this place?</h4>
-                        </div>
-                        <div class="modal-body">
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" aria-hidden="true">No,i am not</button>
-                            <button class="btn btn-success">@Html.ActionLink("Delete", "DeleteMessage", new { id = item.Comments  })</button>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
            }
         </tbody>
     </table>
+    <div class="modal" id="myModal" @*title="Job apply form"*@ role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Are you sure you want to delete this place?</h4>
+                </div>
+                <div class="modal-body">
+
+                    @using (Html.BeginForm("DeleteMessage", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @Html.HiddenFor(model => model.Comments, new { id = "com" })
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" aria-hidden="true">No,i am not</button>
+                                <input type="submit" name="Submit" id="Submit" value="Delete" class="btn btn-success" />
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
 </div>
+<script>
+
+    $(".btn-group-sm").on("click", function () {
+        var key = $(this).closest('tr').children(".com").text();
+        $('#com').val(key);
+    })
+</script>

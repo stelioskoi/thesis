@@ -36,7 +36,8 @@ namespace WebApplication2.Controllers
                 {
 
                     FormsAuthentication.SetAuthCookie(f.UserName, false);
-                    return RedirectToAction("Index", "Dashboard");
+                    
+                   return RedirectToAction("Index", "Dashboard");
 
                 }
             }
