@@ -21,7 +21,7 @@
 {
        <div class="col-sm-4 col-md-2 ">
             <div class="thumbnail">
-                <img id="crewpic" src="data:Images;base64,@System.Convert.ToBase64String(item.image)" />
+                <img id="crewpic" src="~/ImagesCrew/@item.nameofpic" height="200 " width="242" />
                 <div class="caption">
                     <h4>@Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.sname)</h4>
                     <h5>@Html.DisplayFor(modelItem => item.job)</h5>

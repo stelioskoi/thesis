@@ -150,6 +150,26 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Messages", "Dashboard");
         }
 
+        public ActionResult DeleteEmploy(Crew f)
+        {
+            string fullPath = Request.MapPath("~/ImagesCrew/" + f.nameofpic);
+            System.IO.File.Delete(fullPath);
+
+            D.Open();
+            int i = D.DataDelete("DELETE FROM Crew WHERE  Email= '" + f.email + "'  ");
+            D.Close();
+
+            if (i > 0)
+            {
+                ModelState.AddModelError("Success", "Save Success");
+            }
+            else
+            {
+                ModelState.AddModelError("Error", "Save Error");
+            }
+            return RedirectToAction("Crew", "Dashboard");
+        }
+
         public ActionResult Map()
         {
             Map p = new Map();
@@ -186,10 +206,15 @@ namespace WebApplication2.Controllers
         public ActionResult Crew()
         {
 
-
+            Crew k = new Crew();
+            List<Crew> Lic = new List<Crew>();
+            Lic = k.IndexDisplay();
+            ViewData["IndexDisplay"] = Lic;
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveNewPartner(Crew f)
         {
 
@@ -201,31 +226,45 @@ namespace WebApplication2.Controllers
                 //if (check == false)
                 //{
 
-                
-
-                D.Open();
-                int i = D.DataInsert("INSERT INTO Crew(First_Name,Last_name,Job,Email,Info,Image) VALUES ('" + f.fname + "','" + f.sname + "','" + f.job + "','" + f.email + "','" + f.info + "','" + documentBytes + "')");
-                if (i > 0)
+                if (Request.Files.Count > 0)
                 {
-                    ModelState.AddModelError("Success", "Save Success");
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        f.nameofpic = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/ImagesCrew"), f.nameofpic);
+                        file.SaveAs(path);
+                        
+
+
+                        D.Open();
+                            int i = D.DataInsert("INSERT INTO Crew(First_Name,Last_name,Job,Email,Info,ImageName) VALUES ('" + f.fname + "','" + f.sname + "','" + f.job + "','" + f.email + "','" + f.info + "','" + f.nameofpic + "')");
+
+                            if (i > 0)
+                            {
+                                ModelState.AddModelError("Success", "Save Success");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("Error", "Save Error");
+                            }
+
+                            //}
+
+                            D.Close();
+                        }
+                    
+
+                    else
+                    {
+
+                        TempData["check_db"] = 1;
+                    }
+
+
                 }
-                else
-                {
-                    ModelState.AddModelError("Error", "Save Error");
-                }
-
-                //}
-
-                D.Close();
             }
-            else
-            {
-
-                TempData["check_db"] = 1;
-            }
-
-
-
 
             return RedirectToAction("Partners", "Home");
         }

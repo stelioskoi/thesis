@@ -30,9 +30,11 @@ namespace WebApplication2.Models
         public string info { get; set; }
 
         
-        public byte[] image { get; set; }
+        public string nameofpic { get; set; }
+        
+        [Required(ErrorMessage = "Required")]
+        public HttpPostedFileBase picture { get; set; }
 
-            
 
         string constr = ConfigurationManager.ConnectionStrings["Contacts"].ConnectionString;
         Crew p = null;
@@ -56,7 +58,7 @@ namespace WebApplication2.Models
                     p.job = Convert.ToString(rd.GetSqlValue(3));
                     p.email = Convert.ToString(rd.GetSqlValue(4));
                     p.info = Convert.ToString(rd.GetSqlValue(5));
-                    p.image = (byte[])rd[6];
+                    p.nameofpic = Convert.ToString(rd.GetSqlValue(6));
                     CrewList.Add(p);
 
                 }
