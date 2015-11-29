@@ -1,0 +1,115 @@
+﻿.blogContainer {
+    overflow: hidden;
+    margin-top:50px;
+}
+
+.mainblogview {
+    width: 70%;
+    min-height: 500px;
+    float: left;
+    position: relative;
+}
+
+    .mainblogview hr {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+.mainblogbar {
+    width: 29%;
+    min-height: 500px;
+    float: right;
+}
+
+    .mainblogbar .blogControlPanel {
+        background-color: rgba(255, 255, 255, 0.50);
+        border: solid #750000 0.5px;
+        -moz-box-shadow: 0 1px 4px #999;
+        -webkit-box-shadow: 0 1px 4px #999;
+        box-shadow: 0 1px 4px #999;
+        width: 99%;
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
+
+        .mainblogbar .blogControlPanel .blogCtrlTable {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+            .mainblogbar .blogControlPanel .blogCtrlTable td {
+                padding: 1px 5px;
+            }
+
+            .mainblogbar .blogControlPanel .blogCtrlTable .blgCtrlPnl {
+                text-decoration: none;
+                color: blue;
+                font-size: 14px;
+            }
+
+    .mainblogbar .adminBlogCtrl {
+        background-color: rgba(255, 255, 255, 0.50);
+        border: solid #750000 0.5px;
+        -moz-box-shadow: 0 1px 4px #999;
+        -webkit-box-shadow: 0 1px 4px #999;
+        box-shadow: 0 1px 4px #999;
+        width: 99%;
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
+
+        .mainblogbar .adminBlogCtrl table {
+            margin: 10px;
+        }
+
+            .mainblogbar .adminBlogCtrl table td a {
+                text-decoration: none;
+                color: blue;
+            }
+.postsSearch {
+    width: 100%;
+    margin: 50px 0 10px 0;
+    overflow: hidden;
+}
+
+    .postsSearch .allPostsForm {
+        float: right;
+    }
+.postsTable {
+    background-color: rgba(255, 255, 255, 0.50);
+    -moz-box-shadow: 0 1px 4px #999;
+    -webkit-box-shadow: 0 1px 4px #999;
+    box-shadow: 0 1px 4px #999;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .postsTable a {
+        text-decoration: none;
+        color: blue;
+    }
+
+    .postsTable th {
+        border: solid #750000 0.5px;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .postsTable td {
+        padding: 5px;
+        border: solid #750000 0.5px;
+    }
+
+    .postsTable .tableTitle {
+        width: 200px;
+    }
+.mainblogview .paging {
+    position: absolute;
+    bottom: 0;
+}
+
+    .postsFilter .postsFltInp {
+        width: 100px;
+        float: left;
+    }
+

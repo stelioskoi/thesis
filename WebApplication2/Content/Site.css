@@ -2,8 +2,8 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    margin-top:60px;
-    
+    margin-top:53px;
+    font-family:Narkisim;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -175,20 +175,21 @@ font-size: 10px;
 
 
 .ch-img-1 { 
-	background-image: url(../Images/4.jpg);
-   
+	background-image: url(../Images/send.png);
+   background-color:red;
 }
 
 .ch-img-2 { 
-	background-image: url(../Images/images.jpg);
+	background-image: url(../Images/apply.jpg);
+    
 }
 
 .ch-img-3 { 
-	background-image: url(../Images/wd2.jpg);
+	background-image: url(../Images/map.jpg);
 }
 .ch-info {
 	position: absolute;
-	background: rgba(63,147,147, 0.8);
+	background: rgba(196,90,46, 0.8);
 	width: inherit;
 	height: inherit;
 	border-radius: 50%;
@@ -247,6 +248,7 @@ font-size: 10px;
 .ch-item:hover .ch-info {
 	transform: scale(1);
 	opacity: 1;
+   
 }
 
 .ch-item:hover .ch-info p {
@@ -256,9 +258,54 @@ font-size: 10px;
 footer
  {
    margin-top:20px;
+  
    padding-top:20px;
    border-top: 1px solid #dddddd;
 }
+    #ftable {
+       border: ;
+    }
 .adminbut  {
     color:white;
 }
+
+#thead {
+font-weight:800;
+
+}
+#tbody {
+font-size:12px;
+
+}
+
+#ftable {
+   border-collapse: separate;
+   border-spacing: 8px;
+   
+   
+}
+.ch-grid li {
+margin-right:80px;
+}
+.navbar-nav li:hover {
+background-color:#464646;
+border-radius: 10px;
+border-width:10px;
+font-weight:700;
+}
+#lanpicen {
+    height: 33px;
+    width: 33px;
+    
+    
+}
+#lanpicgr {
+height:28px;
+width:28px;
+
+}
+#morebut a {
+color:black;
+text-decoration:none;
+}
+

@@ -11,17 +11,26 @@
     }
 </style>
 <h2>Crew</h2>
-
 <div class="row">
-    <div class="col-lg-4">
-        @using (Html.BeginForm("SaveNewPartner", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#yourModal">Post a new company member</button>  
+    <div class="modal" id="yourModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Post a new job</h4>
+                </div>
+                <div class="modal-body">
+                   
+
+                    @using (Html.BeginForm("SaveNewPartner", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
 
 
-            
-            @Html.AntiForgeryToken();
 
-            @*@Html.HiddenFor(model => model.nameofjob, new { id = "njob" })*@
+                        @Html.AntiForgeryToken();
+
+                        @*@Html.HiddenFor(model => model.nameofjob, new { id = "njob" })*@
 
                         @Html.LabelFor(model => model.fname)<br />
                         @Html.TextBoxFor(model => model.fname, new { id = "inputError", @class = "form-control" })
@@ -51,12 +60,24 @@
                         <label for="file">Upload person pic:</label>
                         @Html.TextBoxFor(model => model.picture, new { type = "file", name = "file", id = "fileupload", @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.picture)<br />
-                       <label id="fileStatus" Text="" class="error"></label><br />
+                        <label id="fileStatus" Text="" class="error"></label><br />
                         <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-success" />
 
-        }
-     </div>
-    <div class="col-md-6">
+                    }
+                        
+
+                    
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="row">
+   
+    <div class="col-md-10">
         <div class="table-responsive">
             <table class="table">
                 <thead>

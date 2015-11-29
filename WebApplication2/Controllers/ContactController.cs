@@ -5,6 +5,7 @@ using System.Web;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Net;
 
 namespace WebApplication2.Controllers
 {
@@ -37,7 +38,7 @@ namespace WebApplication2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveDataContact(ContactModel f)
+        public async Task<ActionResult> SaveDataContact(ContactModel f)
         {
 
             if (ModelState.IsValid)
@@ -45,7 +46,7 @@ namespace WebApplication2.Controllers
                 D.Open();
                 bool check = D.DataSearch("SELECT * FROM table_form WHERE Email = '" + f.Email + "' ");
                 D.Close();
-                if (check == false)      
+                if (check == false)
                 {
                     if (Request.Files.Count > 0)
                     {
@@ -70,6 +71,9 @@ namespace WebApplication2.Controllers
                             }
 
                             TempData["notice"] = 1;
+
+                            await SendEmail(f.Email, f.nameofjob,f.LastName);
+                            
                         }
 
                     }
@@ -89,6 +93,25 @@ namespace WebApplication2.Controllers
         }
 
 
+        public async Task SendEmail(string email, string name,string lastname)
+        {
+            
+                    MailMessage MyMailMessage = new MailMessage("stelios.koidakis@hotmail.com", email,
+                    "Margaritisktm company ", "Hi,You have applied to job position of " + name + ".We will be in touch after review you application.Muchas Gracias ");
+                    MailMessage SecondMailMessage = new MailMessage("stelios.koidakis@hotmail.com", "stelitos1990@gmail.com",
+                           "Company message ", "Hi,Mr " +lastname+" applied to job position of " + name + ".Go to the web site to check his/her cv . Muchas Gracias ");
+            MyMailMessage.IsBodyHtml = false;
+                    NetworkCredential mailAuthentication = new NetworkCredential("stelios.koidakis@hotmail.com", "");
+                    SmtpClient mailClient = new SmtpClient("smtp.live.com", 25);
+                    mailClient.EnableSsl = true;
+                    mailClient.UseDefaultCredentials = false;
+                    mailClient.Credentials = mailAuthentication;
+                    await mailClient.SendMailAsync(MyMailMessage);
+                    await mailClient.SendMailAsync(SecondMailMessage);
+            
+        }
+
+        
 
 
         public ActionResult Submit()

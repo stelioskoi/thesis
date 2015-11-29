@@ -12,6 +12,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery")
 
+    <link href="~/Content/blog.css" rel="stylesheet" />
     @**<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css"
         rel="stylesheet" type="text/css" />*@
     @*@Scripts.Render("~/bundles/jqueryui")*@
@@ -32,10 +33,10 @@
 </head>
 <body>
    
-        <div class="navbar navbar-fixed-top">
+        <div  class="navbar navbar-fixed-top">
             <div style="background-color:white" class="navbar navbar-inverse ">
                 <div>
-
+                    <h5>@DateTime.Today.DayOfWeek ,@DateTime.Now</h5>
                 </div>
                 <div id="social">
                     <div class="twitter-slide social-slide" onclick="window.location='http://www.twitter.com';"></div>
@@ -80,6 +81,7 @@
                             <li>@Html.ActionLink(WebApplication2.Resources.HomeText.More, "More", "Home")</li>
                             <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Form, "ContactForm", "Contact")</li>
                             <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Language, "Index", "Language")</li>
+                            <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
                         </ul>
                             @if (Request.IsAuthenticated)
                             {
@@ -100,10 +102,49 @@
         @RenderBody()
     
         <footer class="footer">
+            <div class="container">
 
-            <p>Telephone number:+306981189423</p>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+               
+                    <table class="table-condensed" id="ftable">
+                        <thead>
+                            <tr id="thead">
+                                <td>About us</td>
+                                <td>Contact us information </td>
+                                <td>Product</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr>
+                                <td>Telephone number:+306981189423</td>
+                                <td>Larissa Hrown polutexniou 15</td>
+                                <td>Web design</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>@DateTime.Now.Year - My ASP.NET Application</td>
+                                <td>Hours -open:9:00-17:00(M-F)</td>
+                                <td>Software development</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Margaritis Thomas & Stelios Koidakis</td>
+                                <td>margastel@thesis.com</td>
+                                <td>Web development</td>
+                                <td>
+                                    <a href='@Url.Action("Change", "Language", new { LanguageAbbrevation = "el" }, null)'>
+                                        <img id="lanpicgr" src="~/Images/greekflag.jpg" />
+                                    </a>
+                                    <a href='@Url.Action("Change", "Language", new { LanguageAbbrevation = "en" }, null)'>
+                                        <img id="lanpicen" src="~/Images/enflag.png" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
 
+                    </table>
+               
+             
         </footer>
 
         @Scripts.Render("~/bundles/bootstrap")
