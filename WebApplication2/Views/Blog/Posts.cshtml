@@ -70,8 +70,8 @@
         </a>
         
         <div class="postDescCategory">
-        <label>Category:&nbsp;</label>
-            @{ 
+            <label>Category:&nbsp;</label>
+            @{
                 var postCats = blogCtrl.GetPostCategories(post.Post);
                 int postcatnum = 0;
                 foreach (var cat in postCats)
@@ -79,15 +79,13 @@
                     postcatnum++;
                     <a href="#">
                         <div class="postDescCatNames">
-                           @cat.Name@if (postcatnum < postCats.Count())
-                           {
-                               @Html.Raw(",&nbsp;")
-                           }
+                            @cat.Name@if (postcatnum < postCats.Count())
+                            {
+                                @Html.Raw(",&nbsp;")
+                            }
                         </div>
-
-                        </a>
+                    </a>
                 }
-
             }
         </div>
 
@@ -114,9 +112,11 @@
 
 <div id="spacer"></div>
 <div class="paging">
-    <div class="pagenum">
+   
+     @*<div class="pagenum"> GIA SVISIMO LOGIKA
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-    </div>
+    </div>*@
+    
     @{
         List<string> searchCatList = new List<string>();
         List<string> searchTagList = new List<string>();

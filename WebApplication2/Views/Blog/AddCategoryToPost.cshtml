@@ -1,0 +1,87 @@
+﻿@model WebApplication2.Models.PostViewModel
+@using WebApplication2.Models
+@{
+    ViewBag.Title = "AddCategoryToPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    label {
+    padding-right:15px;
+    }
+    a {
+         padding-right:15px;
+    }
+</style>
+<h2>AddCategoryToPost</h2>
+<div class=" row">
+<div class="col-lg-3">
+@using (Html.BeginForm("AddCategoryToPost", "Blog", FormMethod.Post, new { @class = "addCatForm", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="addCatCont">
+        
+        <tr>
+          
+            <td><a href="@Url.Action("AddNewCategory", "Blog", new { postid = Model.ID, callfrompost=true})" class="addremoveBtn" title="Add Category"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="18" height="18" alt="add"  /></a>
+                @for (int i = 0; i < Model.Categories.Count(); i++)
+                {
+                    BlogDbContext db = new BlogDbContext();
+                    string catId = Model.Categories[i].id;
+                    bool check = db.PostCategories.Where(x => x.CategoryId == catId && x.PostId == Model.ID).Select(x => x.Checked).FirstOrDefault();
+
+                    if (check)
+                    {
+                        Model.Categories[i].Checked = true;
+                        @Html.CheckBoxFor(m => m.Categories[i].Checked)
+                    }
+                    else
+                    {
+                        @Html.CheckBoxFor(m => m.Categories[i].Checked)
+                    }
+                  
+                    @Html.LabelFor(m => m.Categories[i].Checked, Model.Categories[i].Name)
+                   
+                    @Html.HiddenFor(m => m.Categories[i].id)
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @Html.TextBoxFor(m => m.ID, new { type = "hidden" })
+                <input class="addCatBtn" type="submit" value="&#x27a5;" />
+            </td>
+        </tr>
+    </table>
+}
+</div>
+<div class="col-lg-3">
+    @using (Html.BeginForm("AddNewCategory", "Blog", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <table class="newCatCont">
+            <tr>
+                <td>Name :</td>
+                <td><input class="newCatInp" type="text" name="catName" /></td>
+            </tr>
+            <tr>
+                <td>UrlSeo :</td>
+                <td><input class="newCatInp" type="text" name="catUrlSeo" /></td>
+            </tr>
+            <tr>
+                <td>Description :</td>
+                <td><input class="newCatInp" type="text" name="catDesc" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @if (Model != null)
+                {
+                        <input type="hidden" value="@Model.ID" name="postid" />
+                    }
+                    <input class="newCatBtn" type="submit" value="&#x27a5;" />
+                </td>
+            </tr>
+        </table>
+    }
+
+    </div>
+</div>

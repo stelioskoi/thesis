@@ -21,12 +21,12 @@
 
 <div id="postScroll">
     <div class="postContainer">
-        @if (User.IsInRole("Admin"))
+        @if (Request.IsAuthenticated)
         {
             <div class="postMenu">
                 <div class="postMenuSub">
-                    <a href="@Url.Action("EditPost","Blog",new {slug = Model.UrlSeo })" title="Edit"><img src="@Url.Content("~/Content/images/post/edit.png")" width="25" height="25" alt="edit" /></a>
-                    <a href="@Url.Action("DeletePost","Blog",new {postid = Model.ID })" title="Delete"><img src="@Url.Content("~/Content/images/post/delete.png")" width="25" height="25" alt="delete" /></a>
+                    <a href="@Url.Action("EditPost","Blog",new {slug = Model.UrlSeo })" title="Edit"><img src="@Url.Content("~/BlogImages/edit.png")" width="25" height="25" alt="edit" /></a>
+                    <a href="@Url.Action("DeletePost","Blog",new {postid = Model.ID })" title="Delete"><img src="@Url.Content("~/BlogImages/delete.png")" width="25" height="25" alt="delete" /></a>
                 </div>
             </div>
         }

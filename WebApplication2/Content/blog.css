@@ -108,8 +108,190 @@
     bottom: 0;
 }
 
+    .editPostContainer {
+    background-color: rgba(255, 255, 255, 0.70);
+    border-radius: 5px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: hidden;
+}
+
+    .editPostContainer .editPostId {
+        width: 100%;
+        overflow: hidden;
+        float: left;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+        .editPostContainer .editPostId .editPostIdLbl {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .editPostContainer .editPostId .editPostIdInp {
+            width: 50px;
+            display: block;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+    .editPostContainer .editPostTitle {
+        width: 100%;
+    }
+
+        .editPostContainer .editPostTitle .editPostTitleLbl {
+            text-align: center;
+            float: left;
+        }
+
+        .editPostContainer .editPostTitle .editPostTitleInp {
+            width: 100%;
+            display: block;
+            height: 25px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+    .editPostContainer .editPostVideo {
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .editPostContainer .editPostVideo .editPostVidCont {
+            border: groove 2px;
+            border-bottom: none;
+            border-right: none;
+            background-color: white;
+            border-radius: 5px;
+            height: 30px;
+            text-align: center;
+            float: left;
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+
+        .editPostContainer .editPostVideo .editPostVideoInp {
+            margin: 5px 10px 0 5px;
+            border-radius: 5px;
+            height: 25px;
+        }
+
+    .editPostContainer .editPostCategories {
+        overflow: hidden;
+        width: 100%;
+   
+        }
+
+        .editPostContainer .editPostCategories .editPostCatInp {
+           border: groove 2px;
+            border-bottom: none;
+            border-right: none;
+            background-color: white;
+            border-radius: 5px;
+            height: 30px;
+            text-align: center;
+            float: left;
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+
+            .editPostContainer .editPostCategories .editPostCatInp .catName {
+                float: left;
+                margin: 5px;
+            }
+
+    .editPostContainer .editPostTags {
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .editPostContainer .editPostTags .editPostTagInp {
+            border: groove 2px;
+            border-bottom: none;
+            border-right: none;
+            background-color: white;
+            border-radius: 5px;
+            height: 30px;
+            text-align: center;
+            float: left;
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+
+            .editPostContainer .editPostTags .editPostTagInp .tagName {
+                float: left;
+                margin: 5px;
+            }
+
+    .editPostContainer .editPostMeta, .editPostContainer .editPostSeo {
+        width: 50%;
+        border-radius: 5px;
+        height: 25px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .editPostContainer .editPostDesc {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .editPostContainer .editPostBody {
+        overflow: hidden;
+        width: 100%;
+    }
+
+        .editPostContainer .editPostBody .comTextBtn {
+            font-size: 24px;
+            border: 1.5px groove;
+            border-top: none;
+            border-left: none;
+            border-radius: 5px;
+            float: right;
+            background-color: rgba(255, 255, 255, 0.58);
+        }
+
+        .postDescContainer  {
+            float: left;
+        }
+
+
+
+.addthis_sharing_toolbox{
+        margin:10px auto;
+        width: 360px;
+    }
+
+
+
+
+
+
+.postsFilter {
+    float: left;
+    max-width: 700px;
+}
+
+    .postsFilter table th {
+        text-align: left;
+        display: table-cell;
+        vertical-align: text-top;
+    }
+
     .postsFilter .postsFltInp {
         width: 100px;
         float: left;
     }
 
+    .postsFilter .postFiltBtn {
+        font-size: 18px;
+        border: 1.5px groove;
+        border-top: none;
+        border-left: none;
+        border-radius: 5px;
+        float: right;
+        background-color: rgba(255, 255, 255, 0.58);
+        margin-top: 10px;
+    }

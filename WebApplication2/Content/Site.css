@@ -287,11 +287,15 @@ font-size:12px;
 .ch-grid li {
 margin-right:80px;
 }
+.navbar-nav li {
+ 
+}
 .navbar-nav li:hover {
+ 
 background-color:#464646;
 border-radius: 10px;
 border-width:10px;
-font-weight:700;
+ -webkit-transform: scale(1.05); 
 }
 #lanpicen {
     height: 33px;

@@ -89,8 +89,11 @@ namespace WebApplication2.Controllers
             _blogRepository.AddNewPost(post);
             return RedirectToAction("AllPosts", "Blog", new { slug = model.UrlSeo });
         }
-        public ActionResult AllPosts(int? page, string sortOrder, string searchString, string[] searchCategory, string[] searchTag)
+
+        [Authorize]
+        public ActionResult AllPosts(int? page, string sortOrder, string searchString, string[] searchCategory, string[] searchTag,string slug)
         {
+            
             allPostsList.Clear();
             checkCatList.Clear();
             checkTagList.Clear();
@@ -101,6 +104,10 @@ namespace WebApplication2.Controllers
             ViewBag.CurrentSearchTag = searchTag;
             ViewBag.DateSortParm = string.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             ViewBag.TitleSortParm = sortOrder == "Title" ? "title_desc" : "Title";
+
+
+
+           
 
             var posts = _blogRepository.GetPosts();
             foreach (var post in posts)
@@ -178,11 +185,11 @@ namespace WebApplication2.Controllers
                     allPostsList = allPostsList.OrderBy(x => x.Date).ToList();
                     break;
             }
-
+           
             int pageSize = 2;
             int pageNumber = (page ?? 1);
             return View("AllPosts", allPostsList.ToPagedList(pageNumber, pageSize));
-
+            
         }
 
         [ChildActionOnly]
@@ -196,8 +203,7 @@ namespace WebApplication2.Controllers
             ViewBag.CurrentSearchTag = searchTag;
             ViewBag.DateSortParm = string.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             ViewBag.TitleSortParm = sortOrder == "Title" ? "title_desc" : "Title";
-
-            var posts = _blogRepository.GetPosts();
+           var posts = _blogRepository.GetPosts();
             foreach (var post in posts)
             {
                 var postCategories = GetPostCategories(post);
@@ -307,7 +313,296 @@ namespace WebApplication2.Controllers
             return View(model);
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddCategoryToPost(string postid)
+        {
+            PostViewModel model = new PostViewModel();
+            model.ID = postid;
+            model.Categories = _blogRepository.GetCategories();
+            return View(model);
+        }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddTagToPost(string postid)
+        {
+            PostViewModel model = new PostViewModel();
+            model.ID = postid;
+            model.Tags = _blogRepository.GetTags();
+            return View(model);
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddTagToPost(PostViewModel model)
+        {
+            var post = _blogRepository.GetPostById(model.ID);
+            var postTags = _blogRepository.GetPostTags(post);
+            List<string> pTagIds = new List<string>();
+            foreach (var pTag in postTags)
+            {
+                pTagIds.Add(pTag.Id);
+            }
+            var newTags = model.Tags.Where(x => x.Checked == true).ToList();
+            List<string> nTagIds = new List<string>();
+            foreach (var pTag in newTags)
+            {
+                nTagIds.Add(pTag.Id);
+            }
+            if (!pTagIds.SequenceEqual(nTagIds))
+            {
+                foreach (var pTag in postTags)
+                {
+                    _blogRepository.RemovePostTags(model.ID, pTag.Id);
+                }
+                foreach (var tag in model.Tags)
+                {
+                    PostTag postTag = new PostTag();
+                    //if (tag.Checked == true)
+                    //{
+                        postTag.PostId = model.ID;
+                        postTag.TagId = tag.Id;
+                        postTag.Checked = true;
+                        _blogRepository.AddPostTags(postTag);
+                    //}
+                }
+                _blogRepository.Save();
+            }
+            return RedirectToAction("EditPost", new { slug = post.UrlSeo });
+        }
+
+        [Authorize]
+        public ActionResult RemoveTagFromPost(string slug, string postid, string tagName)
+        {
+            CreatePostViewModel(slug);
+            _blogRepository.RemoveTagFromPost(postid, tagName);
+            return RedirectToAction("EditPost", new { slug = slug });
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddNewTag(string postid, bool callfrompost)
+        {
+            
+            if (postid != null && callfrompost)
+            {
+                PostViewModel model = new PostViewModel();
+                model.ID = postid;
+                return View(model);
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
+
+        [Authorize]
+        [HttpPost]
+       
+        public ActionResult AddCategoryToPost(PostViewModel model)
+        {
+            var post = _blogRepository.GetPostById(model.ID);
+            var postCats = _blogRepository.GetPostCategories(post);
+            List<string> pCatIds = new List<string>();
+            foreach (var pCat in postCats)
+            {
+                pCatIds.Add(pCat.id);
+            }
+            var newCats = model.Categories.Where(x => x.Checked == true).ToList();
+            List<string> nCatIds = new List<string>();
+            foreach (var pCat in newCats)
+            {
+                nCatIds.Add(pCat.id);
+            }
+            if (!pCatIds.SequenceEqual(nCatIds))
+            {
+                foreach (var pCat in postCats)
+                {
+                    _blogRepository.RemovePostCategories(model.ID, pCat.id);
+                }
+                foreach (var cat in model.Categories)
+                {
+                    PostCategory postCategory = new PostCategory();
+                    if (cat.Checked == true)
+                    {
+                        postCategory.PostId = model.ID;
+                        postCategory.CategoryId = cat.id;
+                        postCategory.Checked = true;
+                        _blogRepository.AddPostCategories(postCategory);
+                    }
+                }
+                _blogRepository.Save();
+            }
+            return RedirectToAction("EditPost", new { slug = post.UrlSeo });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult CategoriesAndTags()
+        {
+            checkCatList.Clear();
+            checkTagList.Clear();
+            CreateCatAndTagList();
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveCatAndTag(string[] categoryNames, string[] tagNames)
+        {
+            if (categoryNames != null)
+            {
+                foreach (var catName in categoryNames)
+                {
+                    var category = _blogRepository.GetCategories().Where(x => x.Name == catName).FirstOrDefault();
+                    _blogRepository.RemoveCategory(category);
+                }
+            }
+            if (tagNames != null)
+            {
+                foreach (var tagName in tagNames)
+                {
+                    var tag = _blogRepository.GetTags().Where(x => x.Name == tagName).FirstOrDefault();
+                    _blogRepository.RemoveTag(tag);
+                }
+            }
+            return RedirectToAction("CategoriesAndTags", "Blog");
+        }
+
+        [Authorize]
+        public ActionResult RemoveCategoryFromPost(string slug, string postid, string catName)
+        {
+            CreatePostViewModel(slug);
+            _blogRepository.RemoveCategoryFromPost(postid, catName);
+            return RedirectToAction("EditPost", new { slug = slug });
+        }
+
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddNewCategory(string postid, bool callfrompost)
+        {
+            if (postid != null && callfrompost)
+            {
+                PostViewModel model = new PostViewModel();
+                model.ID = postid;
+                return View(model);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddNewCategory(string postid, string catName, string catUrlSeo, string catDesc)
+        {
+            if (postid != null)
+            {
+                _blogRepository.AddNewCategory(catName, catUrlSeo, catDesc);
+                return RedirectToAction("AddCategoryToPost", new { postid = postid });
+            }
+            else
+            {
+                _blogRepository.AddNewCategory(catName, catUrlSeo, catDesc);
+                return RedirectToAction("CategoriesAndTags", "Blog");
+            }
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddNewTag(string postid, string tagName, string tagUrlSeo)
+        {
+            if (postid != null)
+            {
+                _blogRepository.AddNewTag(tagName, tagUrlSeo);
+                return RedirectToAction("AddTagToPost", new { postid = postid });
+            }
+            else
+            {
+                _blogRepository.AddNewTag(tagName, tagUrlSeo);
+                return RedirectToAction("CategoriesAndTags", "Blog");
+            }
+
+        
+}
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult DeletePost(PostViewModel model, string postid)
+        {
+            model.ID = postid;
+            return View(model);
+        }
+
+
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(string postId)
+        {
+            _blogRepository.DeletePostandComponents(postId);
+            return RedirectToAction("Index", "Blog");
+        }
+
+
+        [Authorize]
+        [HttpGet]
+
+        public ActionResult EditPost(string slug)
+        {
+
+            var model = CreatePostViewModel(slug);
+            model.Categories = _blogRepository.GetCategories();
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        
+        public ActionResult EditPost(PostViewModel model)
+        {
+            var post = _blogRepository.GetPostById(model.ID);
+            post.Body = model.Body;
+            post.Title = model.Title;
+            post.Meta = model.Meta;
+            post.UrlSeo = model.UrlSeo;
+            post.ShortDescription = model.ShortDescription;
+            post.Modified = DateTime.Now;
+            _blogRepository.Save();
+
+            return RedirectToAction("Post", new { slug = model.UrlSeo });
+        }
+
+        public PostViewModel CreatePostViewModel(string slug)
+        {
+            PostViewModel model = new PostViewModel();
+            var postid = _blogRepository.GetPostIdBySlug(slug);
+            var post = _blogRepository.GetPostById(postid);
+            model.ID = postid;
+            model.Title = post.Title;
+            model.Body = post.Body;
+            model.Meta = post.Meta;
+            model.UrlSeo = post.UrlSeo;
+            model.Videos = _blogRepository.GetPostVideos(post).ToList();
+            model.PostCategories = _blogRepository.GetPostCategories(post).ToList();
+            model.PostTags = _blogRepository.GetPostTags(post).ToList();
+            model.ShortDescription = post.ShortDescription;
+            return model;
+        }
         public IList<Post> GetPosts()
         {
             return _blogRepository.GetPosts();

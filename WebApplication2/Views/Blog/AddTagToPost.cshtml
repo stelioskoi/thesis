@@ -1,0 +1,77 @@
+﻿@model WebApplication2.Models.PostViewModel
+@using  WebApplication2.Models
+
+@{
+    ViewBag.Title = "AddTagToPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddTagToPost</h2>
+<div class="row">
+    <div class="col-lg-3">
+@using (Html.BeginForm("AddNewTag", "Blog", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="newCatCont">
+        <tr>
+            <td>Name :</td>
+            <td><input class="newCatInp" type="text" name="tagName" /></td>
+        </tr>
+        <tr>
+            <td>UrlSeo :</td>
+            <td><input class="newCatInp" type="text" name="tagUrlSeo" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @if (Model != null)
+                {
+                    <input type="hidden" value="@Model.ID" name="postid" />
+                }
+                <input class="newCatBtn" type="submit" value="&#x27a5;" />
+            </td>
+        </tr>
+    </table>
+}
+</div>
+    <div class="col-lg-3">
+        @using (Html.BeginForm("AddTagToPost", "Blog", FormMethod.Post, new { @class = "addCatForm", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <table class="addCatCont">
+                <tr>
+                    <td><a href="@Url.Action("AddNewTag", "Blog", new { postid = Model.ID, callfrompost=true})" class="addremoveBtn" title="Add Tag"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
+                    <td>Add New Tag</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @for (int i = 0; i < Model.Tags.Count(); i++)
+                {
+                    BlogDbContext db = new BlogDbContext();
+                    string tagId = Model.Tags[i].Id;
+                    bool check = db.PostTags.Where(x => x.TagId == tagId && x.PostId == Model.ID).Select(x => x.Checked).FirstOrDefault();
+                    if (check)
+                    {
+                        Model.Tags[i].Checked = true;
+                @Html.CheckBoxFor(m => m.Tags[i].Checked)
+                    }
+                    else
+                    {
+                @Html.CheckBoxFor(m => m.Tags[i].Checked)
+                    }
+
+                @Html.LabelFor(m => m.Tags[i].Checked, Model.Tags[i].Name)
+                @Html.HiddenFor(m => m.Tags[i].Id)<br />
+                }
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Html.TextBoxFor(m => m.ID, new { type = "hidden" })
+                        <input class="addCatBtn" type="submit" value="&#x27a5;" />
+                    </td>
+                </tr>
+            </table>
+        }
+        </div>
+    </div>

@@ -1,4 +1,7 @@
-﻿@model PagedList.IPagedList<WebApplication2.Models.AllPostsViewModel>
+﻿@using WebApplication2.Models
+@model PagedList.IPagedList<WebApplication2.Models.AllPostsViewModel>
+
+
 @using WebApplication2.Controllers
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" />
@@ -9,6 +12,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var categories = BlogController.checkCatList;
     var tags = BlogController.checkTagList;
+
     var num = 0;
 
 }
@@ -164,12 +168,18 @@
                     <div>&#9679;@tag.Name</div>
                 }
             </td>
-            @if (User.IsInRole("Admin"))
-                {
-                <td><a href="@Url.Action("EditPost","Blog",new {slug = post.UrlSlug })" title="Edit">Edit</a></td>
-                <td><a href="@Url.Action("DeletePost","Blog",new {postid = post.PostId })" title="Delete">Delete</a></td>
-            }
-        </tr>
+            
+          
+            <td>
+                <a href="@Url.Action("EditPost", "Blog", new { slug =  @post.UrlSlug })" title="Edit"><img src="@Url.Content("~/BlogImages/edit.png")" width="25" height="25" alt="edit" /></a>
+
+            </td>
+
+            <td>
+                <a href="@Url.Action("DeletePost", "Blog", new { postid =  @post.PostId })" title="Delete"><img src="@Url.Content("~/BlogImages/delete.png")" width="25" height="25" alt="delete" /></a>
+            </td>
+           
+</tr>
     }
 </table>
 

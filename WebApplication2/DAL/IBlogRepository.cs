@@ -36,7 +36,7 @@ namespace WebApplication2.DAL
         void AddNewTag(string tagName, string tagUrlSeo);
         void RemoveCategory(Category category);
         void RemoveTag(Tag tag);
-        
+        void DeletePostandComponents(string postid);
         void AddNewPost(Post post);
         void Save();
     }

@@ -66,6 +66,7 @@ namespace WebApplication2
         {
             return _context.Posts.Find(id);
         }
+
         public string GetPostIdBySlug(string slug)
         {
             return _context.Posts.Where(x => x.UrlSeo == slug).FirstOrDefault().Id;

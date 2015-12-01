@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebApplication2.Models
 {
@@ -16,8 +17,12 @@ namespace WebApplication2.Models
         public string Title { get; set; }
         [Required]
         [Display(Name = "ShortDescription")]
+
+        [AllowHtml]
         public string ShortDescription { get; set; }
         [Required]
+
+        [AllowHtml]
         [Display(Name = "Body")]
         public string Body { get; set; }
         [Required]
@@ -83,7 +88,7 @@ namespace WebApplication2.Models
             public string Name { get; set; }
 
             [Required]
-            [StringLength(20, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 5)]
+            [StringLength(20, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 1)]
             [Display(Name = "UrlSeo")]
             public string UrlSeo { get; set; }
 
@@ -167,11 +172,14 @@ namespace WebApplication2.Models
         public bool Checked { get; set; }
         public Tag Tag { get; set; }
         public string UrlSlug { get; set; }
+       
+
     }
 
     //model gia na emfanizei to view ksexorista tou kathe post
     public class PostViewModel
     {
+        [AllowHtml]
         public string Body { get; set; }
         public string FirstPostId { get; set; }
         public string ID { get; set; }
@@ -187,6 +195,7 @@ namespace WebApplication2.Models
         public string Meta { get; set; }
         public string UrlSeo { get; set; }
         public IList<Category> PostCategories { get; set; }
+        [AllowHtml]
         public string ShortDescription { get; set; }
         public IList<Category> Categories { get; set; }
         public IList<Tag> Tags { get; set; }

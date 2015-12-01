@@ -295,6 +295,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BlogImages\add1.jpg" />
+    <Content Include="BlogImages\delete.png" />
+    <Content Include="BlogImages\edit.png" />
+    <Content Include="BlogImages\remove.png" />
     <Content Include="Content\blog.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Images\apply.jpg" />
@@ -955,6 +959,11 @@
     <Content Include="Views\Blog\AllPosts.cshtml" />
     <Content Include="Views\Blog\AddNewPost.cshtml" />
     <Content Include="Views\Blog\Post.cshtml" />
+    <Content Include="Views\Blog\EditPost.cshtml" />
+    <Content Include="Views\Blog\AddCategoryToPost.cshtml" />
+    <Content Include="Views\Blog\AddTagToPost.cshtml" />
+    <Content Include="Views\Blog\CategoriesAndTags.cshtml" />
+    <Content Include="Views\Blog\DeletePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
