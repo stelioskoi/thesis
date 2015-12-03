@@ -40,7 +40,7 @@ namespace WebApplication2.Models
   
         public ICollection<PostCategory> PostCategories { get; set; }
         public ICollection<PostTag> PostTags { get; set; }
-        public ICollection<PostVideo> PostVideos { get; set; }
+        public ICollection<PostImage> PostImages { get; set; }
       
     }
     public class Category
@@ -113,23 +113,20 @@ namespace WebApplication2.Models
 
         }
 
-    public class PostVideo
+    public class PostImage
         {
             public int Id { get; set; }
 
-            [Required]
-            [Display(Name = "VideoUrl")]
-            [DataType(DataType.Url)]
-            public string VideoUrl { get; set; }
-
-            public string VideoThumbnail { get; set; }
-
+            
+            [Display(Name = "Imagename")]
+            public string Imagename { get; set; }
+        
             public string PostId { get; set; }
-            public string VideoSiteName { get; set; }
-
+          
             public Post Post { get; set; }
 
-        }
+            
+    }
 
     public class BlogViewModel
     {
@@ -190,7 +187,7 @@ namespace WebApplication2.Models
         public int PostLikes { get; set; }
         public string PreviousPostSlug { get; set; }
         public string Title { get; set; }
-        public IList<PostVideo> Videos { get; set; }
+        public IList<PostImage> Images { get; set; }
         public IList<Tag> PostTags { get; set; }
         public string Meta { get; set; }
         public string UrlSeo { get; set; }
@@ -199,8 +196,9 @@ namespace WebApplication2.Models
         public string ShortDescription { get; set; }
         public IList<Category> Categories { get; set; }
         public IList<Tag> Tags { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase pic;
 
-       
 
     }
 }

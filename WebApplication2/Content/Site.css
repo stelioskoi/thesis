@@ -297,6 +297,10 @@ border-radius: 10px;
 border-width:10px;
  -webkit-transform: scale(1.05); 
 }
+
+.dropdown-menu li:hover {
+ -webkit-transform: scale(1.02); 
+}
 #lanpicen {
     height: 33px;
     width: 33px;

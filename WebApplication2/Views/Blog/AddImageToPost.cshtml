@@ -1,0 +1,21 @@
+﻿@model WebApplication2.Models.PostViewModel
+
+@{
+    ViewBag.Title = "AddVideoToPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddVideoToPost</h2>
+
+@using (Html.BeginForm("AddImageToPost", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="addVidCont">
+        <input type="hidden" name="slug" value="@Model.UrlSeo" />
+        <input type="hidden" name="postid" value="@Model.ID" />
+        @*<input class="addVidToPost" type="file" name="Imagename" />*@
+        @Html.TextBoxFor(model => model.pic , new { type = "file", name = "Imagename", @class = "form-addVidToPost" })
+        <input class="addVidBtn" type="submit" value="&#x27a5;" />
+    </div>
+}
+

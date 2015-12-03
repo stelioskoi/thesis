@@ -16,7 +16,7 @@ namespace WebApplication2.DAL
 
         IList<Tag> GetPostTags(Post post);
 
-        IList<PostVideo> GetPostVideos(Post post);
+        IList<PostImage> GetPostImages(Post post);
 
         IList<Tag> GetTags();
         IList<Category> GetCategories();
@@ -24,8 +24,8 @@ namespace WebApplication2.DAL
         Post GetPostById(string postid);
         string GetPostIdBySlug(string slug);
        
-        void AddVideoToPost(string postid, string videoUrl);
-        void RemoveVideoFromPost(string postid, string videoUrl);
+        void AddImageToPost(string postid, string Imagename);
+        void RemoveImageFromPost(string postid, string Imagename);
         void AddPostCategories(PostCategory postCategory);
         void RemovePostCategories(string postid, string categoryid);
         void RemoveCategoryFromPost(string postid, string catName);

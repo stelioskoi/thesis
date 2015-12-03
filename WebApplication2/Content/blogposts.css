@@ -104,8 +104,8 @@
         width: 200px;
     }
 .mainblogview .paging {
-   margin-left:30px;
-   margin-top:5px;
+    position: absolute;
+    bottom: 0;
 }
 
     .editPostContainer {
@@ -262,7 +262,6 @@
 .addthis_sharing_toolbox{
         margin:10px auto;
         width: 360px;
-
     }
 
 
@@ -296,54 +295,3 @@
         background-color: rgba(255, 255, 255, 0.58);
         margin-top: 10px;
     }
-
-
-
-       .postsTable  {
-            float: left;
-        }
-
-       .postsTable .postDescCategory {
-        display: inline-block;
-        margin: 5px 0;
-       
-    }
-
-        .postsTable .postDescCategory .postDescCatNames {
-            float: left;
-
-        }
-
-        .postsTable .postDescCategory label {
-            float: left;
-            font-style: italic;
-            font-weight: bold;
-        }
-        .postDescContainer .postVidCont {
-        float: right;
-        width: 200px;
-    }
-
-#indexFilterBtn {
-color:red;
-font-size:20px;
-margin-top:40px;
-}
-
-
-.postContainer .postHeader {
-           
-           overflow: hidden;
-    }
-.postTitle {
-    margin-top:40px;
-}
- #post {
-margin-top:5px;
-}
-
- .editPostContainer .postVideo .postVidCont {
-        float: left;
-        margin: 5px;
-    }
-

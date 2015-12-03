@@ -39,36 +39,41 @@
                 <td>Title :</td>
                 <td  class="editPostTitle">@Html.TextBoxFor(m => m.Title, new { @class = "editPostTitleInp" })</td>
             </tr>
-            @if (Model.Videos.Count() > 0)
-            {
-                <tr>
-                    @if (Model.Videos.Count() == 1)
+          @if (Model.Images.Count() > 0)
+          {
+            <tr>
+                @if (Model.Images.Count() == 1)
                     {
-                        <td>VideoUrl :</td>
-                    }
-                    else
+                    <td>Image :</td>
+                }
+                else
+                {
+                    <td>Images :</td>
+                }
+                <td style="width:30px;"><a href="@Url.Action("AddImageToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
+               
+                 <td class="editPostCatInp">
+                    @foreach (var image in Model.Images)
                     {
-                        <td>VideoUrls :</td>
+
+                        <div class="catName">
+                            <a href="@image.Imagename" class="editPostVideoInp" style="text-decoration:none;color:blue;float:left;">@image.Imagename</a>
+                            <a href="@Url.Action("RemoveImageFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,videoUrl=image.Imagename })" class="addremoveBtn" title="Remove image"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="remove" /></a>
+                        </div>
                     }
-                    <td ><a href="@Url.Action("AddVideoToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"> </a></td>
-                    <td class="editPostVideo">
-                        @foreach (var video in Model.Videos)
-                        {
-                            <div class="editPostVidCont">
-                                <a href="@video.VideoUrl" class="editPostVideoInp" style="text-decoration:none;color:blue;float:left;">@video.VideoUrl</a>
-                                <a href="@Url.Action("RemoveVideoFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,videoUrl=video.VideoUrl })" class="addremoveBtn" title="Remove Video"><img src="@Url.Content("~/Content/images/post/remove.png")" width="25" height="25" alt="remove" /></a>
-                            </div>
-                        }
-                    </td>
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    <td>VideoUrl :</td>
-                    <td ><a href="@Url.Action("AddVideoToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"></a></td>
-                </tr>
-            }
+                </td>
+                   
+            </tr>
+          }
+          else
+          {
+            <tr>
+                <td>Image :</td>
+                <td colspan="2"><a href="@Url.Action("AddImageToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Image"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
+            </tr>
+          }
+
+
 
             @if (Model.PostCategories.Count() > 0)
             {
@@ -117,13 +122,13 @@
                     {
                         <td>Tags :</td>
                     }
-                    <td style="width:30px;"><a href="@Url.Action("AddTagToPost", "Blog", new { postid = Model.ID})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
+                    <td style="width:30px;"><a href="@Url.Action("AddTagToPost", "Blog", new { postid = Model.ID})" class="addremoveBtn" title="Add Tag"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
                     
                         @foreach (var tag in Model.PostTags)
                         {
                             <td class="editPostTags">
                                 <div class="editPostTagInp">
-                                    <div class="tagName">@tag.Name<a href="@Url.Action("RemoveTagFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,tagName=tag.Name })" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="add" /></a></div>
+                                    <div class="tagName">@tag.Name<a href="@Url.Action("RemoveTagFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,tagName=tag.Name })" class="addremoveBtn" title="Remove Tag"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="add" /></a></div>
 
                                 </div>
                             </td>

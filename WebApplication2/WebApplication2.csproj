@@ -300,6 +300,7 @@
     <Content Include="BlogImages\edit.png" />
     <Content Include="BlogImages\remove.png" />
     <Content Include="Content\blog.css" />
+    <Content Include="Content\blogposts.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Images\apply.jpg" />
     <Content Include="Images\enflag.png" />
@@ -964,9 +965,11 @@
     <Content Include="Views\Blog\AddTagToPost.cshtml" />
     <Content Include="Views\Blog\CategoriesAndTags.cshtml" />
     <Content Include="Views\Blog\DeletePost.cshtml" />
+    <Content Include="Views\Blog\AddImageToPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="BlogImages\PostImages\" />
     <Folder Include="ImagesCrew\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

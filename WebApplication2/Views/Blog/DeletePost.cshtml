@@ -5,10 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    ViewBag.Title = "Delete Post";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 @using (Html.BeginForm("DeletePost", "Blog", FormMethod.Post, new { @role = "form" }))
 {

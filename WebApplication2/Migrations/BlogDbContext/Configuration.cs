@@ -10,6 +10,7 @@ namespace WebApplication2.Migrations.BlogDbContext
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+           
             MigrationsDirectory = @"Migrations\BlogDbContext";
         }
 

@@ -49,15 +49,15 @@ namespace WebApplication2
             }
             return tags;
         }
-        public IList<PostVideo> GetPostVideos(Post post)
+        public IList<PostImage> GetPostImages(Post post)
         {
-            var postUrls = _context.PostVideos.Where(p => p.PostId == post.Id).ToList();
-            List<PostVideo> videos = new List<PostVideo>();
+            var postUrls = _context.PostImages.Where(p => p.PostId == post.Id).ToList();
+            List<PostImage> images = new List<PostImage>();
             foreach (var url in postUrls)
             {
-                videos.Add(url);
+                images.Add(url);
             }
-            return videos;
+            return images;
         }
       
     
@@ -72,36 +72,35 @@ namespace WebApplication2
             return _context.Posts.Where(x => x.UrlSeo == slug).FirstOrDefault().Id;
         }
         
-        public void AddVideoToPost(string postid, string videoUrl)
+        public void AddImageToPost(string postid, string Imagename)
         {
             List<int> numlist = new List<int>();
             int num = 1;
-            string siteName = null;
-            string thumbUrl = null;
-            var check = _context.PostVideos.Where(x => x.PostId == postid && x.VideoUrl == videoUrl).Any();
-            if (!check)
-            {
-                while (_context.PostVideos.Where(x => x.Id == num).Any())
-                {
-                    num++;
-                }
-                if (videoUrl.Contains("youtube.com") || videoUrl.Contains("youtu.be"))
-                {
-                    int pos = videoUrl.LastIndexOf("/") + 1;
-                    var result = videoUrl.Substring(pos, videoUrl.Length - pos);
-                    thumbUrl = "https://img.youtube.com/vi/" + result + "/0.jpg";
-                    siteName = "YouTube";
-                }
-                var video = new PostVideo { Id = num, PostId = postid, VideoUrl = videoUrl, VideoSiteName = siteName, VideoThumbnail = thumbUrl };
-                _context.PostVideos.Add(video);
+           
+            var check = _context.PostImages.Where(x => x.PostId == postid && x.Imagename == Imagename).Any();
+            //if (!check)
+            //{
+            //    while (_context.PostVideos.Where(x => x.Id == num).Any())
+            //    {
+            //        num++;
+            //    }
+            //    if (videoUrl.Contains("youtube.com") || videoUrl.Contains("youtu.be"))
+            //    {
+            //        int pos = videoUrl.LastIndexOf("/") + 1;
+            //        var result = videoUrl.Substring(pos, videoUrl.Length - pos);
+            //        thumbUrl = "https://img.youtube.com/vi/" + result + "/0.jpg";
+            //        siteName = "YouTube";
+            //    }
+                var image = new PostImage { Id = num, PostId = postid, Imagename = Imagename };
+                _context.PostImages.Add(image);
                 Save();
-            }
+            //}
 
         }
-        public void RemoveVideoFromPost(string postid, string videoUrl)
+        public void RemoveImageFromPost(string postid, string videoUrl)
         {
-            var video = _context.PostVideos.Where(x => x.PostId == postid && x.VideoUrl == videoUrl).FirstOrDefault();
-            _context.PostVideos.Remove(video);
+            var video = _context.PostImages.Where(x => x.PostId == postid && x.Imagename == videoUrl).FirstOrDefault();
+            _context.PostImages.Remove(video);
             Save();
         }
         public void AddPostCategories(PostCategory postCategory)
@@ -206,10 +205,10 @@ namespace WebApplication2
         public void DeletePostandComponents(string postid)
         {
             var postCategories = _context.PostCategories.Where(p => p.PostId == postid).ToList();
-             var postVideos = _context.PostVideos.Where(p => p.PostId == postid).ToList();
+             var postImages = _context.PostImages.Where(p => p.PostId == postid).ToList();
            var post = _context.Posts.Find(postid);
             foreach (var pc in postCategories) _context.PostCategories.Remove(pc);
-           foreach (var pv in postVideos) _context.PostVideos.Remove(pv);
+           foreach (var pv in postImages) _context.PostImages.Remove(pv);
            
             
             _context.Posts.Remove(post);

@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,9 @@ namespace WebApplication2.Controllers
 {
     public class BlogController : Controller
     {
+        
+
+
         private IBlogRepository _blogRepository;
 
         public static List<BlogViewModel> postList = new List<BlogViewModel>();
@@ -66,7 +70,7 @@ namespace WebApplication2.Controllers
             var newid = num.ToString();
             PostViewModel model = new PostViewModel();
             model.ID = newid;
-            return View(model);
+         return View(model);
         }
 
         [Authorize]
@@ -85,6 +89,7 @@ namespace WebApplication2.Controllers
                 ShortDescription = model.ShortDescription,
                 Title = model.Title,
                 UrlSeo = model.UrlSeo
+               
             };
             _blogRepository.AddNewPost(post);
             return RedirectToAction("AllPosts", "Blog", new { slug = model.UrlSeo });
@@ -186,13 +191,13 @@ namespace WebApplication2.Controllers
                     break;
             }
            
-            int pageSize = 2;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             return View("AllPosts", allPostsList.ToPagedList(pageNumber, pageSize));
             
         }
 
-        [ChildActionOnly]
+        [Authorize]
         public ActionResult Posts(int? page, string sortOrder, string searchString, string[] searchCategory, string[] searchTag)
         {
             postList.Clear();
@@ -280,7 +285,7 @@ namespace WebApplication2.Controllers
             }
 
 
-            int pageSize = 2;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
 
             return PartialView("Posts", postList.ToPagedList(pageNumber, pageSize));
@@ -294,7 +299,7 @@ namespace WebApplication2.Controllers
             var posts = GetPosts();
             var postid = _blogRepository.GetPostIdBySlug(slug);
             var post = _blogRepository.GetPostById(postid);
-            var videos = GetPostVideos(post);
+            var images = GetPostImages(post);
             var firstPostId = posts.OrderBy(i => i.PostedOn).First().Id;
             var lastPostId = posts.OrderBy(i => i.PostedOn).Last().Id;
             var nextId = posts.OrderBy(i => i.PostedOn).SkipWhile(i => i.Id != postid).Skip(1).Select(i => i.Id).FirstOrDefault();
@@ -306,7 +311,7 @@ namespace WebApplication2.Controllers
             model.ID = post.Id;
             model.PostCount = posts.Count();
             model.UrlSeo = post.UrlSeo;
-            model.Videos = videos;
+            model.Images = images;
             model.Title = post.Title;
             model.Body = post.Body;
             
@@ -537,6 +542,48 @@ namespace WebApplication2.Controllers
 
         
 }
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddImageToPost(string postid, string slug)
+        {
+            PostViewModel model = new PostViewModel();
+            model.ID = postid;
+            model.UrlSeo = slug;
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddImageToPost(string postid, string slug, string Imagename,PostViewModel p,PostImage i)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    i.Imagename = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/BlogImages/PostImages"), i.Imagename);
+                    file.SaveAs(path);
+
+                }
+            }
+
+            CreatePostViewModel(slug);
+                    _blogRepository.AddImageToPost(postid, i.Imagename);
+                
+                return RedirectToAction("EditPost", new { slug = slug });
+        }
+
+
+        [Authorize]
+        public ActionResult RemoveImageFromPost(string slug, string postid, string Imagename)
+        {
+            CreatePostViewModel(slug);
+            _blogRepository.RemoveImageFromPost(postid, Imagename);
+            return RedirectToAction("EditPost", new { slug = slug });
+        }
 
         [Authorize]
         [HttpGet]
@@ -597,7 +644,7 @@ namespace WebApplication2.Controllers
             model.Body = post.Body;
             model.Meta = post.Meta;
             model.UrlSeo = post.UrlSeo;
-            model.Videos = _blogRepository.GetPostVideos(post).ToList();
+            model.Images = _blogRepository.GetPostImages(post).ToList();
             model.PostCategories = _blogRepository.GetPostCategories(post).ToList();
             model.PostTags = _blogRepository.GetPostTags(post).ToList();
             model.ShortDescription = post.ShortDescription;
@@ -617,9 +664,9 @@ namespace WebApplication2.Controllers
         {
             return _blogRepository.GetPostTags(post);
         }
-        public IList<PostVideo> GetPostVideos(Post post)
+        public IList<PostImage> GetPostImages(Post post)
         {
-            return _blogRepository.GetPostVideos(post);
+            return _blogRepository.GetPostImages(post);
         }
         public void CreateCatAndTagList()
         {

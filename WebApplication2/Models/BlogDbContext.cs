@@ -27,7 +27,7 @@ namespace WebApplication2.Models
         public DbSet<PostCategory> PostCategories { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<PostVideo> PostVideos { get; set; }
+        public DbSet<PostImage> PostImages { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

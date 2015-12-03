@@ -17,19 +17,11 @@
 }
 
 
-
-
+<div id="post" class="row">
+<div  class=" col-lg-5">
 <div id="postScroll">
     <div class="postContainer">
-        @if (Request.IsAuthenticated)
-        {
-            <div class="postMenu">
-                <div class="postMenuSub">
-                    <a href="@Url.Action("EditPost","Blog",new {slug = Model.UrlSeo })" title="Edit"><img src="@Url.Content("~/BlogImages/edit.png")" width="25" height="25" alt="edit" /></a>
-                    <a href="@Url.Action("DeletePost","Blog",new {postid = Model.ID })" title="Delete"><img src="@Url.Content("~/BlogImages/delete.png")" width="25" height="25" alt="delete" /></a>
-                </div>
-            </div>
-        }
+        
         <div class=" postHeader">
             @if (Model.ID != Model.FirstPostId)
             {
@@ -44,12 +36,13 @@
         <div class="postTitle"><h2>@Model.Title</h2></div>
         <div class="addthis_sharing_toolbox"></div>
         
-        @if (Model.Videos != null)
+        @if (Model.Images != null)
         {
-            foreach (var video in Model.Videos)
+            foreach (var image in Model.Images)
             {
                 <div class="postVideo">
-                    <iframe width="560" height="315" src="@video.VideoUrl" frameborder="0" allowfullscreen></iframe>
+                    <img  src="~/BlogImages/PostImages/@image.Imagename" height="315 " width="560" />
+                     
                 </div>
             }
         }
@@ -61,3 +54,5 @@
     
 </div>
 
+</div>
+</div>

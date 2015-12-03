@@ -26,6 +26,9 @@
         });
 </script>
 <h2>Add new post</h2>
+
+
+
 @using (Html.BeginForm("AddNewPost", "Blog", FormMethod.Post, new { role = "form" }))
 {
     @Html.AntiForgeryToken()
