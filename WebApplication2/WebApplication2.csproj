@@ -297,6 +297,7 @@
   <ItemGroup>
     <Content Include="BlogImages\add1.jpg" />
     <Content Include="BlogImages\delete.png" />
+    <Content Include="BlogImages\dropdown.png" />
     <Content Include="BlogImages\edit.png" />
     <Content Include="BlogImages\remove.png" />
     <Content Include="Content\blog.css" />

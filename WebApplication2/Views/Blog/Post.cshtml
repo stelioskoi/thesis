@@ -18,7 +18,8 @@
 
 
 <div id="post" class="row">
-<div  class=" col-lg-5">
+
+<div  class=" col-lg-12">
 <div id="postScroll">
     <div class="postContainer">
         
@@ -41,7 +42,7 @@
             foreach (var image in Model.Images)
             {
                 <div class="postVideo">
-                    <img  src="~/BlogImages/PostImages/@image.Imagename" height="315 " width="560" />
+                    <img class="postimage"  src="~/BlogImages/PostImages/@image.Imagename" />
                      
                 </div>
             }

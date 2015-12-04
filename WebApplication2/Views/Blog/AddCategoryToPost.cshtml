@@ -22,7 +22,7 @@
         
         <tr>
           
-            <td><a href="@Url.Action("AddNewCategory", "Blog", new { postid = Model.ID, callfrompost=true})" class="addremoveBtn" title="Add Category"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="18" height="18" alt="add"  /></a>
+            <td>
                 @for (int i = 0; i < Model.Categories.Count(); i++)
                 {
                     BlogDbContext db = new BlogDbContext();

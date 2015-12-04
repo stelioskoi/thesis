@@ -75,6 +75,8 @@ namespace WebApplication2.Migrations.BlogDbContext
                     })
                 .PrimaryKey(t => t.Id);
             
+
+            //?allaghhhhh?
             CreateTable(
                 "dbo.PostVideo",
                 c => new

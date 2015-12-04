@@ -1,4 +1,7 @@
-﻿.blogContainer {
+﻿body {
+font-family:Calibri;
+}
+.blogContainer {
     overflow: hidden;
     margin-top:50px;
 }
@@ -14,7 +17,7 @@
         width: 95%;
         margin: 0 auto;
     }
-
+   
 .mainblogbar {
     width: 29%;
     min-height: 500px;
@@ -39,13 +42,18 @@
 
             .mainblogbar .blogControlPanel .blogCtrlTable td {
                 padding: 1px 5px;
+
             }
 
             .mainblogbar .blogControlPanel .blogCtrlTable .blgCtrlPnl {
                 text-decoration: none;
-                color: blue;
+                color: black;
                 font-size: 14px;
+                font-size:20px;
             }
+.blogCtrlTable {
+display:none;
+}
 
     .mainblogbar .adminBlogCtrl {
         background-color: rgba(255, 255, 255, 0.50);
@@ -86,9 +94,10 @@
 
     .postsTable a {
         text-decoration: none;
-        color: blue;
+        color: black;
+        font-weight:700;
     }
-
+  
     .postsTable th {
         border: solid #750000 0.5px;
         text-align: center;
@@ -324,12 +333,10 @@
         width: 200px;
     }
 
-#indexFilterBtn {
-color:red;
-font-size:20px;
-margin-top:40px;
+#sitelogo {
+font-weight:800;
+text-align:center;
 }
-
 
 .postContainer .postHeader {
            
@@ -340,6 +347,7 @@ margin-top:40px;
 }
  #post {
 margin-top:5px;
+
 }
 
  .editPostContainer .postVideo .postVidCont {
@@ -347,3 +355,20 @@ margin-top:5px;
         margin: 5px;
     }
 
+ .postContainer {
+    margin-left:28%;
+    margin-right:29%;
+}
+
+.postVideo {
+text-align:center;
+}
+.postTitle{
+text-align:center;
+}
+
+.postContainer .postVideo .postimage{
+height:315px; 
+width:560px;
+
+}

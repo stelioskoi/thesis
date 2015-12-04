@@ -50,7 +50,7 @@
                 {
                     <td>Images :</td>
                 }
-                <td style="width:30px;"><a href="@Url.Action("AddImageToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
+                <td style="width:30px;"><a href="@Url.Action("AddImageToPost", "Blog", new { postid = Model.ID, slug=Model.UrlSeo})" class="addremoveBtn" title="Add Video"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
                
                  <td class="editPostCatInp">
                     @foreach (var image in Model.Images)
@@ -58,7 +58,7 @@
 
                         <div class="catName">
                             <a href="@image.Imagename" class="editPostVideoInp" style="text-decoration:none;color:blue;float:left;">@image.Imagename</a>
-                            <a href="@Url.Action("RemoveImageFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,videoUrl=image.Imagename })" class="addremoveBtn" title="Remove image"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="remove" /></a>
+                            <a href="@Url.Action("RemoveImageFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo, picname=image.Imagename })" class="addremoveBtn" title="Remove image"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="remove" /></a>
                         </div>
                     }
                 </td>
@@ -69,7 +69,7 @@
           {
             <tr>
                 <td>Image :</td>
-                <td colspan="2"><a href="@Url.Action("AddImageToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo})" class="addremoveBtn" title="Add Image"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
+                <td colspan="2"><a href="@Url.Action("AddImageToPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,})" class="addremoveBtn" title="Add Image"><img src="@Url.Content("~/BlogImages/add1.jpg")" width="15" height="15" alt="add" /></a></td>
             </tr>
           }
 
@@ -128,7 +128,7 @@
                         {
                             <td class="editPostTags">
                                 <div class="editPostTagInp">
-                                    <div class="tagName">@tag.Name<a href="@Url.Action("RemoveTagFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,tagName=tag.Name })" class="addremoveBtn" title="Remove Tag"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="add" /></a></div>
+                                    <div class="tagName">@tag.Name<a href="@Url.Action("RemoveTagFromPost", "Blog", new { postid = Model.ID,slug=Model.UrlSeo,tagName=tag.Name, picname=Model.pic })" class="addremoveBtn" title="Remove Tag"><img src="@Url.Content("~/BlogImages/remove.png")" width="15" height="15" alt="add" /></a></div>
 
                                 </div>
                             </td>

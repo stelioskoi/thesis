@@ -68,13 +68,15 @@ namespace WebApplication2.Models
     public class PostCategory
         {   [Key]
         [Column(Order =0)]
-            public string PostId { get; set; }
-            [Key]
+        public string PostId { get; set; }
+
+        [Key]
         [Column(Order = 1)]
         public string CategoryId { get; set; }
 
-              public bool Checked { get; set; }
-             public Post Post { get; set; }
+        public bool Checked { get; set; }
+
+        public Post Post { get; set; }
 
             public Category Category { get; set;} 
         }
@@ -117,11 +119,12 @@ namespace WebApplication2.Models
         {
             public int Id { get; set; }
 
-            
+            [Required]
             [Display(Name = "Imagename")]
             public string Imagename { get; set; }
+
         
-            public string PostId { get; set; }
+             public string PostId { get; set; }
           
             public Post Post { get; set; }
 
@@ -183,9 +186,7 @@ namespace WebApplication2.Models
         public string LastPostId { get; set; }
         public string NextPostSlug { get; set; }
         public int PostCount { get; set; }
-        public int PostDislikes { get; set; }
-        public int PostLikes { get; set; }
-        public string PreviousPostSlug { get; set; }
+       public string PreviousPostSlug { get; set; }
         public string Title { get; set; }
         public IList<PostImage> Images { get; set; }
         public IList<Tag> PostTags { get; set; }

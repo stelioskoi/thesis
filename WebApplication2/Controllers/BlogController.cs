@@ -570,7 +570,7 @@ namespace WebApplication2.Controllers
                 }
             }
 
-            CreatePostViewModel(slug);
+                      CreatePostViewModel(slug);
                     _blogRepository.AddImageToPost(postid, i.Imagename);
                 
                 return RedirectToAction("EditPost", new { slug = slug });
@@ -578,10 +578,14 @@ namespace WebApplication2.Controllers
 
 
         [Authorize]
-        public ActionResult RemoveImageFromPost(string slug, string postid, string Imagename)
+        public ActionResult RemoveImageFromPost(string slug, string postid, string picname)
         {
+             
+            string fullPath = Request.MapPath("~/BlogImages/PostImages/" + picname);
+            System.IO.File.Delete(fullPath);
+
             CreatePostViewModel(slug);
-            _blogRepository.RemoveImageFromPost(postid, Imagename);
+            _blogRepository.RemoveImageFromPost(postid, picname);
             return RedirectToAction("EditPost", new { slug = slug });
         }
 

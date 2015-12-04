@@ -7,7 +7,7 @@
     var categories = BlogController.checkCatList;
     var tags = BlogController.checkTagList;
 }
-
+<h1 id="sitelogo">Company blog </h1>
 
     <div class="blogContainer">
     <div class="mainblogview">
@@ -17,7 +17,7 @@
 
         @if (Request.IsAuthenticated)
         {
-            <div class="adminBlogCtrl">
+            @*<div class="adminBlogCtrl">
                 <table>
                     <tr>
                         <td><a href="@Url.Action("AddNewPost","Blog")">Add New Post</a></td>
@@ -26,8 +26,12 @@
                     <tr>
                         <td><a href="@Url.Action("CategoriesAndTags","Blog")">Categories And Tags</a></td>
                     </tr>
+                    <tr>
+                    <td><a href="@Url.Action("AllPosts", "Blog")" >Post List</a></td>
+                        
+                    </tr>
                 </table>
-            </div>
+            </div>*@
         }
 
 
@@ -51,12 +55,10 @@
                 <input type="hidden" name="sortOrder" value="@ViewBag.CurrentSort" />
                 <input type="search" name="searchString" value="@ViewBag.CurrentSearchString" placeholder="Search..." />
                 <input type="submit" value="&#128270;" style="background:none;border:none;" />
+                
+                <a id="tog" ><img src="@Url.Content("~/BlogImages/dropdown.png")" width="15" height="15" alt="add" /></a>
             }
-           
-           
-            <div style="margin:10px;"><a href="@Url.Action("AllPosts", "Blog")" style="text-decoration:none;color:blue;" title="Posts">Post List</a></div>
-
-            <div  id="indexFilterBtn">Filter</div>
+        
 
             @using (Html.BeginForm("Index", "Blog", FormMethod.Get, new { @class = "indexFilterForm" }))
             {
@@ -115,4 +117,16 @@
 
     </div>
 </div>
+<script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+<script>
 
+    $(document).ready(function () {
+        $("#tog").click(function () {
+            $('.blogCtrlTable').toggle('slide', {
+                duration: 600,
+                easing: 'easeOutBounce',
+                direction: 'up'
+            });
+        });
+    });
+</script>

@@ -16,7 +16,7 @@ namespace WebApplication2
             _context = context;
         }
 
-        #region 1
+       
         public IList<Post> GetPosts()
         {
             return _context.Posts.ToList();
@@ -78,31 +78,21 @@ namespace WebApplication2
             int num = 1;
            
             var check = _context.PostImages.Where(x => x.PostId == postid && x.Imagename == Imagename).Any();
-            //if (!check)
-            //{
-            //    while (_context.PostVideos.Where(x => x.Id == num).Any())
-            //    {
-            //        num++;
-            //    }
-            //    if (videoUrl.Contains("youtube.com") || videoUrl.Contains("youtu.be"))
-            //    {
-            //        int pos = videoUrl.LastIndexOf("/") + 1;
-            //        var result = videoUrl.Substring(pos, videoUrl.Length - pos);
-            //        thumbUrl = "https://img.youtube.com/vi/" + result + "/0.jpg";
-            //        siteName = "YouTube";
-            //    }
+            
                 var image = new PostImage { Id = num, PostId = postid, Imagename = Imagename };
                 _context.PostImages.Add(image);
                 Save();
-            //}
+        
 
         }
-        public void RemoveImageFromPost(string postid, string videoUrl)
+        public void RemoveImageFromPost(string postid, string picname)
         {
-            var video = _context.PostImages.Where(x => x.PostId == postid && x.Imagename == videoUrl).FirstOrDefault();
-            _context.PostImages.Remove(video);
+            var image = _context.PostImages.Where(x => x.PostId == postid && x.Imagename == picname).FirstOrDefault();
+            _context.PostImages.Remove(image);
             Save();
         }
+
+
         public void AddPostCategories(PostCategory postCategory)
         {
             _context.PostCategories.Add(postCategory);
@@ -139,6 +129,8 @@ namespace WebApplication2
             _context.Categories.Add(category);
             Save();
         }
+
+
         public void RemoveTagFromPost(string postid, string tagName)
         {
             var tagid = _context.Tags.Where(x => x.Name == tagName).Select(x => x.Id).FirstOrDefault();
@@ -219,7 +211,7 @@ namespace WebApplication2
             _context.Posts.Add(post);
             Save();
         }
-        #endregion
+        
 
       
 
