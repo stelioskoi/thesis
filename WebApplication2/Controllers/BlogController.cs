@@ -7,7 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication2.DAL;
 using WebApplication2.Models;
-
+using Facebook;
+using System.Text.RegularExpressions;
 
 namespace WebApplication2.Controllers
 {
@@ -18,11 +19,13 @@ namespace WebApplication2.Controllers
 
         private IBlogRepository _blogRepository;
 
+        //statikes listes pou tha xrisimopoiountai sta views
         public static List<BlogViewModel> postList = new List<BlogViewModel>();
         public static List<AllPostsViewModel> allPostsList = new List<AllPostsViewModel>();
         public static List<AllPostsViewModel> checkCatList= new List<AllPostsViewModel>();
         public static List<AllPostsViewModel> checkTagList = new List<AllPostsViewModel>();
 
+        //sundesi tou controller me to repository
         public BlogController()
         {
             _blogRepository = new BlogRepository(new BlogDbContext());
@@ -92,8 +95,28 @@ namespace WebApplication2.Controllers
                
             };
             _blogRepository.AddNewPost(post);
+
+            //provlima me to url kai to offline
+            string desc = System.Net.WebUtility.HtmlDecode(model.ShortDescription);
+            string finaldesc= Regex.Replace(desc, @"<[^>]*>", String.Empty);
+            string message = "http://localhost:52815/Blog/Post?slug="+ System.Net.WebUtility.HtmlDecode(model.UrlSeo) + "   " + finaldesc;
+            long userId = 100010771963874;
+            string wallAccessToken = "CAARfEI0GudoBACp8ZAsnrDH1mYnbxFr0jIAqpOp8DQfDij1ihI7Kt7ORQFEplI7F0WZCpNGYvTbZC7DTZA33s5FZBtTZCkWs9xyPdaPuQizxXHPM06Sf5TIoAx6sqCYdKqsnJTeddefjSdMaL6Q1L1ZCblZAEk384V01gcZBjqRroeiXqMxWuBNtqKf8iK2MgT90ZD&expires=5183999";
+            PostToWall(message, userId, wallAccessToken);
             return RedirectToAction("AllPosts", "Blog", new { slug = model.UrlSeo });
         }
+
+       
+        public  void PostToWall(string message, long userId, string wallAccessToken)
+        {
+            var fb = new FacebookClient(wallAccessToken);
+            string url = string.Format("{0}/{1}", userId, "feed");
+            var argList = new Dictionary<string, object>();
+            argList["message"] = message;
+            fb.Post(url, argList);
+        }
+
+        //Page sortorder klp einai gia pagegind filtering etc
 
         [Authorize]
         public ActionResult AllPosts(int? page, string sortOrder, string searchString, string[] searchCategory, string[] searchTag,string slug)
@@ -120,6 +143,7 @@ namespace WebApplication2.Controllers
                 var postCategories = GetPostCategories(post);
                 var postTags = GetPostTags(post);
                 allPostsList.Add(new AllPostsViewModel() { PostId = post.Id, Date = post.PostedOn, Description = post.ShortDescription, Title = post.Title, PostCategories = postCategories, PostTags = postTags, UrlSlug = post.UrlSeo });
+                
             }
 
             if (searchString != null)
@@ -149,6 +173,7 @@ namespace WebApplication2.Controllers
                         }
                     }
                 }
+
                 allPostsList = allPostsList.Intersect(newlist).ToList();
             }
 
@@ -190,7 +215,9 @@ namespace WebApplication2.Controllers
                     allPostsList = allPostsList.OrderBy(x => x.Date).ToList();
                     break;
             }
-           
+
+            //apo tin arxi topothetimena vasi imerominias
+            allPostsList = allPostsList.OrderByDescending(x => x.Date).ToList();
             int pageSize = 4;
             int pageNumber = (page ?? 1);
             return View("AllPosts", allPostsList.ToPagedList(pageNumber, pageSize));
@@ -200,6 +227,7 @@ namespace WebApplication2.Controllers
         [Authorize]
         public ActionResult Posts(int? page, string sortOrder, string searchString, string[] searchCategory, string[] searchTag)
         {
+            //katharizoume ti lista gia na min exoume duplicate dedomena
             postList.Clear();
 
             ViewBag.CurrentSort = sortOrder;
@@ -208,7 +236,10 @@ namespace WebApplication2.Controllers
             ViewBag.CurrentSearchTag = searchTag;
             ViewBag.DateSortParm = string.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             ViewBag.TitleSortParm = sortOrder == "Title" ? "title_desc" : "Title";
-           var posts = _blogRepository.GetPosts();
+          
+            //pairnoume ola ta posts
+            var posts = _blogRepository.GetPosts();
+            //parnoume ola ta tags kai categories kai ta ta vazoume se ena new blog view model
             foreach (var post in posts)
             {
                 var postCategories = GetPostCategories(post);
@@ -223,6 +254,7 @@ namespace WebApplication2.Controllers
                 postList = postList.Where(x => x.Title.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
+            //ama epilextoun ta checkbox apo tis katigories psakse ta post valta s mia list 
             if (searchCategory != null)
             {
                 List<BlogViewModel> newlist = new List<BlogViewModel>();
@@ -284,7 +316,9 @@ namespace WebApplication2.Controllers
                     break;
             }
 
-
+            //apo tin arxi topothetimena vasi imerominias
+            postList = postList.OrderByDescending(x => x.PostedOn).ToList();
+            //posa post emfanizontai se kathe page
             int pageSize = 4;
             int pageNumber = (page ?? 1);
 
@@ -605,7 +639,7 @@ namespace WebApplication2.Controllers
         public ActionResult DeletePost(string postId)
         {
             _blogRepository.DeletePostandComponents(postId);
-            return RedirectToAction("Index", "Blog");
+            return RedirectToAction("AllPosts", "Blog");
         }
 
 
@@ -654,6 +688,23 @@ namespace WebApplication2.Controllers
             model.ShortDescription = post.ShortDescription;
             return model;
         }
+
+       
+
+
+        public void CreateCatAndTagList()
+        {
+            foreach (var ct in _blogRepository.GetCategories())
+            {
+                checkCatList.Add(new AllPostsViewModel { Category = ct, Checked = false });
+            }
+            foreach (var tg in _blogRepository.GetTags())
+            {
+                checkTagList.Add(new AllPostsViewModel { Tag = tg, Checked = false });
+            }
+        }
+
+        //dimiourgia listwn helper gia na mporoume na tis kaloume sto ekastwte  views
         public IList<Post> GetPosts()
         {
             return _blogRepository.GetPosts();
@@ -672,16 +723,6 @@ namespace WebApplication2.Controllers
         {
             return _blogRepository.GetPostImages(post);
         }
-        public void CreateCatAndTagList()
-        {
-            foreach (var ct in _blogRepository.GetCategories())
-            {
-                checkCatList.Add(new AllPostsViewModel { Category = ct, Checked = false });
-            }
-            foreach (var tg in _blogRepository.GetTags())
-            {
-                checkTagList.Add(new AllPostsViewModel { Tag = tg, Checked = false });
-            }
-        }
+
     }
 }

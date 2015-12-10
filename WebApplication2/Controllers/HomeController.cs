@@ -109,8 +109,13 @@ namespace WebApplication2.Controllers
             D.Close();
             return RedirectToAction("Offices", "Home");
         }
-        
-        
+
+        public ActionResult Works()
+        {
+            ViewBag.Message = "Works";
+
+            return View();
+        }
 
     }
 

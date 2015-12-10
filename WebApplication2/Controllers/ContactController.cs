@@ -96,12 +96,12 @@ namespace WebApplication2.Controllers
         public async Task SendEmail(string email, string name,string lastname)
         {
             
-                    MailMessage MyMailMessage = new MailMessage("stelios.koidakis@hotmail.com", email,
+                    MailMessage MyMailMessage = new MailMessage("thwmassteliosthesis@hotmail.com", email,
                     "Margaritisktm company ", "Hi,You have applied to job position of " + name + ".We will be in touch after review you application.Muchas Gracias ");
-                    MailMessage SecondMailMessage = new MailMessage("stelios.koidakis@hotmail.com", "stelitos1990@gmail.com",
+                    MailMessage SecondMailMessage = new MailMessage("thwmassteliosthesis@hotmail.com", "stelitos1990@gmail.com",
                            "Company message ", "Hi,Mr " +lastname+" applied to job position of " + name + ".Go to the web site to check his/her cv . Muchas Gracias ");
             MyMailMessage.IsBodyHtml = false;
-                    NetworkCredential mailAuthentication = new NetworkCredential("stelios.koidakis@hotmail.com", "");
+                    NetworkCredential mailAuthentication = new NetworkCredential("thwmassteliosthesis@hotmail.com", "");
                     SmtpClient mailClient = new SmtpClient("smtp.live.com", 25);
                     mailClient.EnableSsl = true;
                     mailClient.UseDefaultCredentials = false;

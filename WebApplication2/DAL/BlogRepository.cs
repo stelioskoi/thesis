@@ -16,9 +16,10 @@ namespace WebApplication2
             _context = context;
         }
 
-       
+       //get all posts
         public IList<Post> GetPosts()
         {
+            
             return _context.Posts.ToList();
         }
         public IList<Tag> GetTags()
@@ -29,10 +30,14 @@ namespace WebApplication2
         {
             return _context.Categories.ToList();
         }
+        //get categories for each post
         public IList<Category> GetPostCategories(Post post)
         {
+            //GetCategories category id of postcategory table
             var categoryIds = _context.PostCategories.Where(p => p.PostId == post.Id).Select(p => p.CategoryId).ToList();
+            //creaty empty list of categories
             List<Category> categories = new List<Category>();
+            //prosthiki ton id sti kaini lista
             foreach (var catId in categoryIds)
             {
                 categories.Add(_context.Categories.Where(p => p.id == catId).FirstOrDefault());
@@ -41,6 +46,7 @@ namespace WebApplication2
         }
         public IList<Tag> GetPostTags(Post post)
         {
+            //idia diadikasia me ton getpostcategories
             var tagIds = _context.PostTags.Where(p => p.PostId == post.Id).Select(p => p.TagId).ToList();
             List<Tag> tags = new List<Tag>();
             foreach (var tagId in tagIds)

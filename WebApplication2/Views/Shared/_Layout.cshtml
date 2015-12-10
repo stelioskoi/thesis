@@ -65,7 +65,7 @@
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink(WebApplication2.Resources.HomeText.About, "About", "Home")</li>
                                     <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li> <!--den ekana view -->
-                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Works, "About", "Home")</li><!--den ekana view -->
+                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Works, "Works", "Home")</li><!--den ekana view -->
                                     <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Philosophy, "Philosophy", "Home")</li><!--den ekana view -->
                                     <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "History", "Home")</li><!--den ekana view -->
                                 </ul>
@@ -108,27 +108,27 @@
                     <table class="table-condensed" id="ftable">
                         <thead>
                             <tr id="thead">
-                                <td>About us</td>
-                                <td>Contact us information </td>
-                                <td>Product</td>
+                                <td>@WebApplication2.Resources.HomeText.About</td>
+                                <td>@WebApplication2.Resources.HomeText.Contact   @WebApplication2.Resources.HomeText.Informations </td>
+                                <td>@WebApplication2.Resources.HomeText.Product</td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody id="tbody">
                             <tr>
-                                <td>Telephone number:+306981189423</td>
-                                <td>Larissa Hrown polutexniou 15</td>
+                                <td>@WebApplication2.Resources.HomeText.Telephone :+306981189423</td>
+                                <td>@WebApplication2.Resources.HomeText.Larissa @WebApplication2.Resources.HomeText.Hrwwn @WebApplication2.Resources.HomeText.Polutexniou 15</td>
                                 <td>Web design</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>@DateTime.Now.Year - My ASP.NET Application</td>
-                                <td>Hours -open:9:00-17:00(M-F)</td>
+                                <td>@WebApplication2.Resources.HomeText.Hour -@WebApplication2.Resources.HomeText.open:9:00-17:00(M-F)</td>
                                 <td>Software development</td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Margaritis Thomas & Stelios Koidakis</td>
+                                <td>@WebApplication2.Resources.HomeText.Margaritis @WebApplication2.Resources.HomeText.Thwmas & @WebApplication2.Resources.HomeText.Stelios @WebApplication2.Resources.HomeText.Koidakis </td>
                                 <td>margastel@thesis.com</td>
                                 <td>Web development</td>
                                 <td>

@@ -70,6 +70,60 @@ namespace WebApplication2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin.
+        /// </summary>
+        public static string Admin {
+            get {
+                return ResourceManager.GetString("Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies.
+        /// </summary>
+        public static string Applies {
+            get {
+                return ResourceManager.GetString("Applies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Be a part of us.
+        /// </summary>
+        public static string Be {
+            get {
+                return ResourceManager.GetString("Be", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check the job places and dont hesitate to apply.
+        /// </summary>
+        public static string Be_info {
+            get {
+                return ResourceManager.GetString("Be_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check the map.
+        /// </summary>
+        public static string Check {
+            get {
+                return ResourceManager.GetString("Check", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check our partners and our companies that we worked for.
+        /// </summary>
+        public static string Check_info {
+            get {
+                return ResourceManager.GetString("Check_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose.
         /// </summary>
         public static string Choose {
@@ -97,11 +151,47 @@ namespace WebApplication2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crew.
+        /// </summary>
+        public static string Crew {
+            get {
+                return ResourceManager.GetString("Crew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We consist of specialized partners with excellent skills and friendly to every customer.
+        /// </summary>
+        public static string Crew_info {
+            get {
+                return ResourceManager.GetString("Crew_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Form.
         /// </summary>
         public static string Form {
             get {
                 return ResourceManager.GetString("Form", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
             }
         }
         
@@ -124,11 +214,101 @@ namespace WebApplication2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hour.
+        /// </summary>
+        public static string Hour {
+            get {
+                return ResourceManager.GetString("Hour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hrwwn.
+        /// </summary>
+        public static string Hrwwn {
+            get {
+                return ResourceManager.GetString("Hrwwn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Informations.
+        /// </summary>
+        public static string Informations {
+            get {
+                return ResourceManager.GetString("Informations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job.
+        /// </summary>
+        public static string Job {
+            get {
+                return ResourceManager.GetString("Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Koidakis.
+        /// </summary>
+        public static string Koidakis {
+            get {
+                return ResourceManager.GetString("Koidakis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Larissa.
+        /// </summary>
+        public static string Larissa {
+            get {
+                return ResourceManager.GetString("Larissa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map.
+        /// </summary>
+        public static string Map {
+            get {
+                return ResourceManager.GetString("Map", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Margaritis.
+        /// </summary>
+        public static string Margaritis {
+            get {
+                return ResourceManager.GetString("Margaritis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages.
+        /// </summary>
+        public static string Messages {
+            get {
+                return ResourceManager.GetString("Messages", resourceCulture);
             }
         }
         
@@ -151,11 +331,29 @@ namespace WebApplication2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to number.
+        /// </summary>
+        public static string number {
+            get {
+                return ResourceManager.GetString("number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offices .
         /// </summary>
         public static string Offices {
             get {
                 return ResourceManager.GetString("Offices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to open.
+        /// </summary>
+        public static string open {
+            get {
+                return ResourceManager.GetString("open", resourceCulture);
             }
         }
         
@@ -174,6 +372,78 @@ namespace WebApplication2.Resources {
         public static string Philosophy {
             get {
                 return ResourceManager.GetString("Philosophy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polutexniou.
+        /// </summary>
+        public static string Polutexniou {
+            get {
+                return ResourceManager.GetString("Polutexniou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post .
+        /// </summary>
+        public static string Post {
+            get {
+                return ResourceManager.GetString("Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product.
+        /// </summary>
+        public static string Product {
+            get {
+                return ResourceManager.GetString("Product", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send message.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You will be informed on everything about web application development ..
+        /// </summary>
+        public static string Send_info {
+            get {
+                return ResourceManager.GetString("Send_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stelios.
+        /// </summary>
+        public static string Stelios {
+            get {
+                return ResourceManager.GetString("Stelios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone.
+        /// </summary>
+        public static string Telephone {
+            get {
+                return ResourceManager.GetString("Telephone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thwmas.
+        /// </summary>
+        public static string Thwmas {
+            get {
+                return ResourceManager.GetString("Thwmas", resourceCulture);
             }
         }
         

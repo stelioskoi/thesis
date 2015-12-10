@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Works";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+img
+{
+  width: 80%;
+}
+.laptop-bg
+{
+   
+   
+   background-size: contain;
+   background-clip: border-box;
+   position:relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+    .laptop-bg > .laptop-content-bg img {
+    display: inline-block;
+
+height:100%;
+width:100%;
+
+    }
+    .laptop-bg > .laptop-content-bg {
+       
+        position: absolute;
+        /* % to outer border */
+        left: 14%;
+        top: 17%;
+        bottom: 21%;
+        right: 35.0%;
+    }
+</style>
+<h2>Works</h2>
+<div class="row">
+
+    <div class="col-sm-3  ">
+        <div class="laptop-bg">
+            <div class="laptop-content-bg" >
+
+                <img src="~/Images/map.jpg" />
+            </div>
+
+            <img src="~/Images/laptop.png" />
+        </div>
+    </div>
+    <div class="col-sm-3  ">
+        <div class="laptop-bg">
+            <div class="laptop-content-bg">
+                <img src="~/Images/graffiti61402467283.jpg" />
+                
+            </div>
+
+            <img src="~/Images/laptop.png" />
+        </div>
+    </div>
+  
+
+
+</div>

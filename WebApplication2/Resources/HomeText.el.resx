@@ -120,6 +120,24 @@
   <data name="About" xml:space="preserve">
     <value>Σχετικά</value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Διαχειριστή</value>
+  </data>
+  <data name="Applies" xml:space="preserve">
+    <value>Αιτήσεις</value>
+  </data>
+  <data name="Be" xml:space="preserve">
+    <value>Γίνε μέλλος της ομάδας</value>
+  </data>
+  <data name="Be_info" xml:space="preserve">
+    <value>Ενημερώσου για τις θέσεις εργασίας και μην διστάσεις να κάνεις αίτηση</value>
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value>Δές τον χάρτη</value>
+  </data>
+  <data name="Check_info" xml:space="preserve">
+    <value>Δες στο χάρτη τους συνεργάτες μας σε σε όλο το κόσμο</value>
+  </data>
   <data name="Choose" xml:space="preserve">
     <value>Επέλεξε</value>
   </data>
@@ -129,8 +147,20 @@
   <data name="Contacts" xml:space="preserve">
     <value>Επαφές</value>
   </data>
+  <data name="Crew" xml:space="preserve">
+    <value>Προσωπικό</value>
+  </data>
+  <data name="Crew_info" xml:space="preserve">
+    <value>Αποτελούμαστε απο εξειδικευμένους συνεργάτες με άριστες δεξιότητες και φιλικοί σε κάθε πελάτη</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Διαχείριση</value>
+  </data>
   <data name="Form" xml:space="preserve">
     <value>Φόρμα</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Γειά</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>Ιστορία</value>
@@ -138,8 +168,38 @@
   <data name="Home" xml:space="preserve">
     <value>Αρχική</value>
   </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Ώρα</value>
+  </data>
+  <data name="Hrwwn" xml:space="preserve">
+    <value>Ηρών</value>
+  </data>
+  <data name="Informations" xml:space="preserve">
+    <value>Πληροφορίες</value>
+  </data>
+  <data name="Job" xml:space="preserve">
+    <value>Δουλειά</value>
+  </data>
+  <data name="Koidakis" xml:space="preserve">
+    <value>Κοϊδάκης</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Γλώσσα</value>
+  </data>
+  <data name="Larissa" xml:space="preserve">
+    <value>Λάρισσα</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Αποσύνδεση</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Χάρτης</value>
+  </data>
+  <data name="Margaritis" xml:space="preserve">
+    <value>Μαργαρίτης</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Μυνήματα</value>
   </data>
   <data name="More" xml:space="preserve">
     <value>Επιπλέον</value>
@@ -147,14 +207,44 @@
   <data name="News" xml:space="preserve">
     <value>Νέα</value>
   </data>
+  <data name="number" xml:space="preserve">
+    <value>αριθμός</value>
+  </data>
   <data name="Offices" xml:space="preserve">
     <value>Γραφεία</value>
+  </data>
+  <data name="open" xml:space="preserve">
+    <value>ανοιχτά</value>
   </data>
   <data name="Partners" xml:space="preserve">
     <value>Συννεργάτες</value>
   </data>
   <data name="Philosophy" xml:space="preserve">
     <value>Φιλοσοφία</value>
+  </data>
+  <data name="Polutexniou" xml:space="preserve">
+    <value>Πολυτεχνίου</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Τοποθέτησε</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Πρωϊόν</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Στείλε μήνυμα</value>
+  </data>
+  <data name="Send_info" xml:space="preserve">
+    <value>Συνεχεις ενημερωσει και new με θέμα to web συνεχεις ενημερωσει και new με θέμα to web development</value>
+  </data>
+  <data name="Stelios" xml:space="preserve">
+    <value>Στέλιος</value>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>Τηλέφωνο</value>
+  </data>
+  <data name="Thwmas" xml:space="preserve">
+    <value>Θωμάς</value>
   </data>
   <data name="Works" xml:space="preserve">
     <value>Δουλειές</value>

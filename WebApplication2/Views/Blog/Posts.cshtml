@@ -15,28 +15,7 @@
     <table style="float:right;">
         <tr>
             <th>Sort by :</th>
-            <th>
-                @using (Html.BeginForm("Index", "Blog", FormMethod.Get))
-            {
-                if (ViewBag.CurrentSearchCategory != null)
-                {
-                    foreach (var item in ViewBag.CurrentSearchCategory)
-                    {
-                            <input type="hidden" name="searchCategory" value="@item" />
-                        }
-                    }
-                    if (ViewBag.CurrentSearchTag != null)
-                    {
-                        foreach (var item in ViewBag.CurrentSearchTag)
-                        {
-                            <input type="hidden" name="searchTag" value="@item" />
-                        }
-                    }
-                    <input type="hidden" name="searchString" value="@ViewBag.CurrentSearchString" />
-                    <input type="hidden" name="sortOrder" value="@ViewBag.DateSortParm" />
-                    <input class="submitBtnLink" type="submit" value="Date" />
-                }
-            </th>
+         
             <th class="tableTitle">
                 @using (Html.BeginForm("Index", "Blog", FormMethod.Get))
             {

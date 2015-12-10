@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication2.DAL
 {
+    //idisposable Provides a mechanism for releasing unmanaged resources
     public interface IBlogRepository :IDisposable
     {
 

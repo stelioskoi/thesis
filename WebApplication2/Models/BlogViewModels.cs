@@ -131,6 +131,8 @@ namespace WebApplication2.Models
             
     }
 
+
+    //view model use
     public class BlogViewModel
     {
         public DateTime PostedOn { get; set; }

@@ -1,6 +1,10 @@
 ﻿<style>
     body {
         margin-top:7%;
+    
+        }
+  .nav .navbar-nav .navbar-right {
+    padding-right:0px;
     }
 </style>
 @using Microsoft.AspNet.Identity
@@ -10,15 +14,15 @@
 
     <ul class="nav navbar-nav navbar-right" >
         <li>
-            @Html.ActionLink("Hello Admin " + User.Identity.GetUserName() + "!", "Index", "Dashboard", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(@WebApplication2.Resources.HomeText.Hello+" " +@WebApplication2.Resources.HomeText.Admin+" " + User.Identity.GetUserName() + "!", "Index", "Dashboard", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
-        <li >@Html.ActionLink("Post a job", "Index", "Dashboard")</li>
-        <li>@Html.ActionLink("Applies", "Jobs", "Dashboard")</li>
-        <li>@Html.ActionLink("Messages", "Messages", "Dashboard")</li>
-        <li>@Html.ActionLink("Map", "Map", "Dashboard")</li>
-        <li>@Html.ActionLink("Crew", "Crew", "Dashboard")</li>
-        <li>@Html.ActionLink("BlogEdit", "AllPosts", "Blog")</li>
+        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Logout, "Logout", "Admin")</li>
+        <li >@Html.ActionLink(WebApplication2.Resources.HomeText.Post +" "+ WebApplication2.Resources.HomeText.Job, "Index", "Dashboard")</li>
+        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Applies, "Jobs", "Dashboard")</li>
+        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Messages, "Messages", "Dashboard")</li>
+        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Map, "Map", "Dashboard")</li>
+        <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Crew, "Crew", "Dashboard")</li>
+        <li>@Html.ActionLink("Blog "+WebApplication2.Resources.HomeText.Edit, "AllPosts", "Blog")</li>
      </ul>
     
 

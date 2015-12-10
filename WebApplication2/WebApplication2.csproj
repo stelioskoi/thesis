@@ -52,6 +52,10 @@
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.11.4\lib\net45\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.9.3.19379, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.9.3\lib\net40\Google.Apis.dll</HintPath>
       <Private>True</Private>
@@ -311,6 +315,7 @@
     <Content Include="Images\example-slide-4.jpg" />
     <Content Include="Images\greekflag.jpg" />
     <Content Include="Images\job.png" />
+    <Content Include="Images\laptop.png" />
     <Content Include="Images\map.jpg" />
     <Content Include="Images\office-building.png" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -967,6 +972,7 @@
     <Content Include="Views\Blog\CategoriesAndTags.cshtml" />
     <Content Include="Views\Blog\DeletePost.cshtml" />
     <Content Include="Views\Blog\AddImageToPost.cshtml" />
+    <Content Include="Views\Home\Works.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

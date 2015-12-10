@@ -12,10 +12,26 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Partners</title>
+    <style>
+        .row {
+        margin-left:30px;
+        margin-right:30px;
+        }
+        .thumbnail  {
+             border:1px solid #000000;
+            border-radius: 5px 20px 5px; 
+       }
+
+        #crewpic {
+            border-radius: 5px 20px 5px;
+            
+        }
+</style>
 </head>
+
 <body>
     <h2 class="page-header">The crew</h2>
- <div class="jumbotron">
+ 
     <div class="row">
 @foreach (var item in Model)
 {
@@ -52,7 +68,12 @@
 
 
     </div>
-     </div>
+    
+     
+
+
+  
+     
 </body>
 </html>
 <script>
