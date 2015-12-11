@@ -249,4 +249,7 @@
   <data name="Works" xml:space="preserve">
     <value>Δουλειές</value>
   </data>
+  <data name="Bloginfo" xml:space="preserve">
+    <value>Εδώ μπορείς να ενημερωθείς για όλες τις νέες τεχνολογίες και να διαβάσεις νέα στο τομέα του  web development</value>
+  </data>
 </root>

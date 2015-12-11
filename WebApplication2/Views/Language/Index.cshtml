@@ -3,8 +3,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h3>@WebApplication2.Resources.HomeText.Choose  @WebApplication2.Resources.HomeText.Language :</h3>
+<style>
+  h2 {
+    text-align:center;
+    }
+    </style>
+<h2>@WebApplication2.Resources.HomeText.Choose  @WebApplication2.Resources.HomeText.Language :</h2>
 
 <ul>
     <li>@Html.ActionLink("English", "Change", "Language", new { LanguageAbbrevation = "en" }, null)</li>

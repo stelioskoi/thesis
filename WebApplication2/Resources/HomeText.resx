@@ -249,4 +249,7 @@
   <data name="Works" xml:space="preserve">
     <value>Works</value>
   </data>
+  <data name="Bloginfo" xml:space="preserve">
+    <value>Here you can infromed about the new technologies and the all news about Web development</value>
+  </data>
 </root>

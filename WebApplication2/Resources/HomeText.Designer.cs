@@ -106,6 +106,15 @@ namespace WebApplication2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here you can infromed about the new technologies and the all news about Web development.
+        /// </summary>
+        public static string Bloginfo {
+            get {
+                return ResourceManager.GetString("Bloginfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check the map.
         /// </summary>
         public static string Check {

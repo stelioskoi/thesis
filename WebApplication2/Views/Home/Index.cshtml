@@ -24,6 +24,44 @@
         padding-top: 100px;
         font-size: 50px;
     }
+    #box {
+        /*margin-top:0.5%;
+    border:1px solid #888;
+    border-radius: 5px 20px 5px;*/
+      
+        padding: 0.3%;
+   margin: 0.7%;
+   background: #e64a4a;
+   color: #fff;
+   font-size: 21px;
+   font-weight: bold;
+   line-height: 1.3em;
+   border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #e64a4a, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+   text-shadow: -1px -1px #aa3030;
+   font-weight: normal;
+    }
+      #box1 {
+   
+        padding: 0.3%;
+   margin: 0.7%;
+   background: #ffd800;
+   color: #fff;
+   font-size: 21px;
+   font-weight: bold;
+   line-height: 1.3em;
+   border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #ffd800, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+   text-shadow: -1px -1px #aa3030;
+   font-weight: normal;
+    }
+    #logo {
+    text-align:center;
+    font-size:35px;
+    font-family:Narkisim;
+    }
 </style>
 
 
@@ -57,7 +95,11 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
+    <div  class="row">
     
+       <p id="logo"> You Only Live Once (grapse tipotaaa epikefalida k apo katw ligo logia)  <p> 
+    
+    </div>
 
     <ul class="ch-grid">
         <li>
@@ -87,64 +129,71 @@
             <div class="ch-item ch-img-3">
                 <div class="ch-info">
                     <h3>Explore our world</h3>
-                    
+
                 </div>
             </div>
             <h3>@WebApplication2.Resources.HomeText.Check </h3>
             <p>@WebApplication2.Resources.HomeText.Check_info</p>
-            <p> @Html.ActionLink(WebApplication2.Resources.HomeText.More , "More", "Home",new {@class = "btn btn-default" }) </p>
+            <p> @Html.ActionLink(WebApplication2.Resources.HomeText.More, "More", "Home", new { @class = "btn btn-default" }) </p>
         </li>
     </ul>
 
-<div id="panrow" class="row">
+    <div id="panrow" class="row">
 
-    <div class="col-md-4">
-        <a class="twitter-timeline" href="https://twitter.com/hashtag/developer" data-widget-id="663012851112648704">#developer Tweets</a>
+        <div class="col-md-4">
+            <a class="twitter-timeline" href="https://twitter.com/hashtag/developer" data-widget-id="663012851112648704">#developer Tweets</a>
+        </div>
+        <div id="box" class="col-md-6">
+
+            <h3>@WebApplication2.Resources.HomeText.Crew </h3>
+            <p>@WebApplication2.Resources.HomeText.Crew_info</p>
+            <p> @Html.ActionLink(WebApplication2.Resources.HomeText.Crew, "Crew", "Home", new { @class = "btn btn-default" }) </p>
+        </div>
+        <div id="box1" class="col-md-6">
+
+            <h3>Blog </h3>
+            <p>@WebApplication2.Resources.HomeText.Bloginfo</p>
+        <p> @Html.ActionLink("Blog", "Index", "Blog", new { @class = "btn btn-default" }) </p>
     </div>
-    <div class="col-md-6">
-        
-                <h3>@WebApplication2.Resources.HomeText.Crew </h3>
-                <p>@WebApplication2.Resources.HomeText.Crew_info</p>
-                <p><a class="btn btn-default" title="General information"></a></p>
-    </div>
+
 </div>
 <div class="row">
 
 
 </div>
-   
- <script>
 
-        $(document).ready(function () {
-            $(".btn btn-default").tooltipster();
+<script>
+
+    $(document).ready(function () {
+        $(".btn btn-default").tooltipster();
 
 
-            $("#DemoCarousel").carousel();
+        $("#DemoCarousel").carousel();
 
-            //Carousel Controls
-            $(".left").click(function () {
-                $("#DemoCarousel").carousel('prev');
-            });
-            $(".right").click(function () {
-                $("#DemoCarousel").carousel('next');
-            });
-
-            //Carousel Indicators
-            $(".slide-1").click(function () {
-                $("#DemoCarousel").carousel(0);
-            });
-            $(".slide-2").click(function () {
-                $("#DemoCarousel").carousel(1);
-            });
-            $(".slide-3").click(function () {
-                $("#DemoCarousel").carousel(2);
-            });
-
-            
-
+        //Carousel Controls
+        $(".left").click(function () {
+            $("#DemoCarousel").carousel('prev');
+        });
+        $(".right").click(function () {
+            $("#DemoCarousel").carousel('next');
         });
 
-     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        //Carousel Indicators
+        $(".slide-1").click(function () {
+            $("#DemoCarousel").carousel(0);
+        });
+        $(".slide-2").click(function () {
+            $("#DemoCarousel").carousel(1);
+        });
+        $(".slide-3").click(function () {
+            $("#DemoCarousel").carousel(2);
+        });
 
-    
-    </script>
+
+
+    });
+
+    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
+
+
+</script>

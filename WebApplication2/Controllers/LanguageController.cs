@@ -28,7 +28,7 @@ namespace WebApplication2.Controllers
             cookie.Value = LanguageAbbrevation;
             Response.Cookies.Add(cookie);
 
-            return View("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
