@@ -28,13 +28,20 @@
             border-radius: 5px 20px 5px;
             
         }
+
+
+        .btn-danger {
+        font-size:10px;
+        
+        }
 </style>
+    <link href="~/Content/polaroid.css" rel="stylesheet" />
 </head>
 
 <body>
     <h2 class="page-header">The crew</h2>
- 
-    <div class="row">
+ @*// gia deleteee*@
+    @*<div class="row">
 @foreach (var item in Model)
 {
        <div class="col-sm-4 col-md-2 ">
@@ -69,11 +76,42 @@
 }
 
 
-    </div>
+    </div>*@
     
-     
+   <div class="row">  
+    <ul class="polaroids">
+@foreach (var item in Model)
+{
+        <li>
+            <a  title="@Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.sname)">
+                <img id="crewpic" src="~/ImagesCrew/@item.nameofpic"  />
+                <h5>@Html.DisplayFor(modelItem => item.job)</h5>
+               
+                <button type="button" class="btn-danger" id="jobbut" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.sname)">Info</button>
+             </a>
+          
+        </li>
 
+        <div class="modal" id="@Html.DisplayFor(modelItem => item.sname)" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3>@Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.sname)</h3>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </div>
 
+                    <div class="modal-body">
+                        @Html.DisplayFor(modelItem => item.info)
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+}
+    </ul>
+</div>
   
      
 </body>

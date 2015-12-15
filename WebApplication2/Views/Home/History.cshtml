@@ -1,38 +1,101 @@
-﻿@using System.Web.Mvc
-@using WebApplication2.Models
-@model IEnumerable<WebApplication2.Models.Images>
+﻿
 
  
 @{
     ViewBag.Title = "History";
     
 }
+<script src="~/Scripts/modernizr.custom.97074.js"></script>
+<script src="~/Scripts/jquery.hoverdir.js"></script>
+<link href="~/Content/hover.css" rel="stylesheet" />
+<h2 class="page-header">Partners</h2>
+<div class="row">
+    <section>
+        <ul id="da-thumbs" class="da-thumbs">
+            <li>
+                <a href="http://dribbble.com/shots/505046-Menu">
+                   
+                    <img src="~/imageshover/1.jpg" />
+                    <div><span>Menu by Simon Jensen</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/504336-TN-Aquarium">
 
-<h2>Partners</h2>
-<div>
+                    <img src="~/imageshover/2.jpg" />
+                    <div><span>TN Aquarium by Charlie Gann</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/504197-Mr-Crabs">
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image1)
-            </th>
-        </tr>
+                    <img src="~/imageshover/3.jpg" />
+                    <div><span>Mr. Crabs by John Generalov</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/503731-Gallery-of-Mo-2-Mo-logo">
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                  
-                    <img src="data:Images;base64,@System.Convert.ToBase64String(item.Image1)" />
-                    
-                </td>
-            </tr>
-        }
-        </table>
+                    <img src="~/imageshover/4.jpg" />
+                    <div><span>Gallery of Mo 2.Mo logo by Adam Campion</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/503058-Ice-Cream-nom-nom">
+
+                    <img src="~/imageshover/5.jpg" />
+                    <div><span>Ice Cream - nom nom by Eight Hour Day</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/502927-My-Muse">
+
+                    <img src="~/imageshover/6.jpg" />
+                    <div><span>My Muse by Zachary Horst</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/502538-Natalie-Justin-Cleaning">
+
+                    <img src="~/imageshover/7.jpg" />
+                    <div><span>Natalie & Justin Cleaning by Justin Younger</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/502523-App-Preview">
+
+                    <img src="~/imageshover/8.jpg" />
+                    <div><span>App Preview by Ryan Deshler</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/501695-Cornwall-Map">
+
+                    <img src="~/imageshover/9.jpg" />
+                    <div><span>Cornwall Map by Katharina Maria Zimmermann</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/500861-final-AD-logo">
+
+                    <img src="~/imageshover/10.jpg" />
+                    <div><span>final AD logo by Annette Diana</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/500369-Land-Those-Planes">
+
+                    <img src="~/imageshover/11.jpg" />
+                    <div><span>Land Those Planes by Lee Ann Marcel</span></div>
+                </a>
+            </li>
+            <li>
+                <a href="http://dribbble.com/shots/497795-Seahorse">
+
+                    <img src="~/imageshover/12.jpg" />
+                    <div><span>Seahorse by Trevor Basset</span></div>
+                </a>
+            </li>
+        </ul>
+    </section>
 </div>

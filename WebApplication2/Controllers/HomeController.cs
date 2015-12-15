@@ -61,13 +61,8 @@ namespace WebApplication2.Controllers
         public ActionResult History()
         {
 
-            Images p = new Images();
-            List<Images> Li = new List<Images>();
            
-
-            Li = p.IndexDisplay();
-            ViewData["IndexDisplay"] = Li;
-            return View(Li);
+            return View();
         }
 
         public ActionResult Partners()

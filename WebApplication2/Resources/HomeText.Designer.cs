@@ -322,7 +322,7 @@ namespace WebApplication2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More.
+        ///   Looks up a localized string similar to Map.
         /// </summary>
         public static string More {
             get {
