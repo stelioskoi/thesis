@@ -146,13 +146,14 @@
 
             <h3>@WebApplication2.Resources.HomeText.Crew </h3>
             <p>@WebApplication2.Resources.HomeText.Crew_info</p>
-            <p> @Html.ActionLink(WebApplication2.Resources.HomeText.Crew, "Crew", "Home", new { @class = "btn btn-default" }) </p>
+            <p> @Html.ActionLink(WebApplication2.Resources.HomeText.Crew, "Partners", "Home", new { @class = "btn btn-default" }) </p>
         </div>
         <div id="box1" class="col-md-6">
 
             <h3>Blog </h3>
             <p>@WebApplication2.Resources.HomeText.Bloginfo</p>
-        <p> @Html.ActionLink("Blog", "Index", "Blog", new { @class = "btn btn-default" }) </p>
+       
+            <p id="morebut"  class=" btn btn-default">@Html.ActionLink("Blog", "Index", "Blog") </p>
     </div>
 
 </div>
