@@ -101,7 +101,7 @@ namespace WebApplication2.Controllers
                     MailMessage SecondMailMessage = new MailMessage("thwmassteliosthesis@hotmail.com", "stelitos1990@gmail.com",
                            "Company message ", "Hi,Mr " +lastname+" applied to job position of " + name + ".Go to the web site to check his/her cv . Muchas Gracias ");
             MyMailMessage.IsBodyHtml = false;
-                    NetworkCredential mailAuthentication = new NetworkCredential("thwmassteliosthesis@hotmail.com", "");
+                    NetworkCredential mailAuthentication = new NetworkCredential("thwmassteliosthesis@hotmail.com", "K. . ");
                     SmtpClient mailClient = new SmtpClient("smtp.live.com", 25);
                     mailClient.EnableSsl = true;
                     mailClient.UseDefaultCredentials = false;

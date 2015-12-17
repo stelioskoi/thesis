@@ -39,45 +39,8 @@
 </head>
 
 <body>
-    <h2 class="page-header">The crew</h2>
- @*// gia deleteee*@
-    @*<div class="row">
-@foreach (var item in Model)
-{
-       <div class="col-sm-4 col-md-2 ">
-            <div class="thumbnail">
-                <img id="crewpic" src="~/ImagesCrew/@item.nameofpic" height="200 " width="242" />
-                <div class="caption">
-                    <h4>@Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.sname)</h4>
-                    <h5>@Html.DisplayFor(modelItem => item.job)</h5>
-                    <h5><button type="button" class="btn btn-group" id="jobbut" data-toggle="modal" data-target="#@Html.DisplayFor(modelItem => item.sname)">Info</button> </h5>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="@Html.DisplayFor(modelItem => item.sname)" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3>@Html.DisplayFor(modelItem => item.fname) @Html.DisplayFor(modelItem => item.sname)</h3>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </div>
-
-                    <div class="modal-body">
-                        @Html.DisplayFor(modelItem => item.info)
-                       
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-}
-
-
-    </div>*@
-    
+    <h2 class="page-header">@WebApplication2.Resources.HomeText.Crew</h2>
+ 
    <div class="row">  
     <ul class="polaroids">
 @foreach (var item in Model)
