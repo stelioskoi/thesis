@@ -30,7 +30,7 @@ namespace WebApplication2
         {
             return _context.Categories.ToList();
         }
-        //get categories for each post
+        //κατηγορίες
         public IList<Category> GetPostCategories(Post post)
         {
             //GetCategories category id of postcategory table
@@ -212,6 +212,7 @@ namespace WebApplication2
             _context.Posts.Remove(post);
             Save();
         }
+
         public void AddNewPost(Post post)
         {
             _context.Posts.Add(post);

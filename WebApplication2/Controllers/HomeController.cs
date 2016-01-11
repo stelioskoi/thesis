@@ -15,6 +15,7 @@ namespace WebApplication2.Controllers
     
     public class HomeController : Controller
     {
+        //κατασκευαστης της sql connections
         public CodeDB D = new CodeDB();
         
 
@@ -92,18 +93,20 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveData(Conmodel f)
         {
-
+            //αφου η φόρμα είναι σώστα συμπληρωμενη 
             if (ModelState.IsValid)
-            {
+            {   /*καλόυμε την σύνδεση*/
                 D.Open();
+                //μέσω της συνάρτησης datainsert του CodeDb εισάγουμε τα δεδομένα στη βάση
                 int i = D.DataInsert("INSERT INTO conus(First,Last,Email,Phone,Comments) VALUES ('" + f.FirstName + "','" + f.LastName + "','" + f.Email + "','" + f.Phone + "','" + f.Comments + "')");
-                
-               
                 TempData["notice"] = 1;
             }
             D.Close();
             return RedirectToAction("Offices", "Home");
         }
+
+
+
 
         public ActionResult Works()
         {

@@ -31,7 +31,7 @@ namespace WebApplication2.Models
         [Required(ErrorMessage = "Required")]
         public string Comments { get; set; }
 
-
+        //αυτό ο τύπος δεδομένων είναι ο κατάληλος για αρχέια 
         [Required(ErrorMessage = "Required")]
        public HttpPostedFileBase file { get; set; }
 

@@ -54,6 +54,7 @@ namespace WebApplication2.Controllers
 
                         if (file != null && file.ContentLength > 0)
                         {
+                           // αποθηκεύουμε το αρχείο στο σημείο που θέλουμε και πέρχουμε το όνομα του αρχείου για να το αποθηκεύσουμε στην συνεχεια στην βδ
                             f.nameofcv = Path.GetFileName(file.FileName);
                             var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), f.nameofcv);
                             file.SaveAs(path);
@@ -94,9 +95,7 @@ namespace WebApplication2.Controllers
 
 
         public async Task SendEmail(string email, string name,string lastname)
-        {
-            
-                    MailMessage MyMailMessage = new MailMessage("thwmassteliosthesis@hotmail.com", email,
+        {            MailMessage MyMailMessage = new MailMessage("thwmassteliosthesis@hotmail.com", email,
                     "Margaritisktm company ", "Hi,You have applied to job position of " + name + ".We will be in touch after review you application.Muchas Gracias ");
                     MailMessage SecondMailMessage = new MailMessage("thwmassteliosthesis@hotmail.com", "stelitos1990@gmail.com",
                            "Company message ", "Hi,Mr " +lastname+" applied to job position of " + name + ".Go to the web site to check his/her cv . Muchas Gracias ");
@@ -108,7 +107,6 @@ namespace WebApplication2.Controllers
                     mailClient.Credentials = mailAuthentication;
                     await mailClient.SendMailAsync(MyMailMessage);
                     await mailClient.SendMailAsync(SecondMailMessage);
-            
         }
 
         

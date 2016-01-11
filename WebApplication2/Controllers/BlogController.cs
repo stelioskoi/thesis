@@ -14,18 +14,15 @@ namespace WebApplication2.Controllers
 {
     public class BlogController : Controller
     {
-        
-
-
         private IBlogRepository _blogRepository;
 
-        //statikes listes pou tha xrisimopoiountai sta views
+        //στατικές λίστες που θα χρησιμοποιηθουν για να περάσουν τα δεδομένα στα  views
         public static List<BlogViewModel> postList = new List<BlogViewModel>();
         public static List<AllPostsViewModel> allPostsList = new List<AllPostsViewModel>();
         public static List<AllPostsViewModel> checkCatList= new List<AllPostsViewModel>();
         public static List<AllPostsViewModel> checkTagList = new List<AllPostsViewModel>();
 
-        //sundesi tou controller me to repository
+        //σύνδεση controller με το repository
         public BlogController()
         {
             _blogRepository = new BlogRepository(new BlogDbContext());

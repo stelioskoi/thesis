@@ -10,6 +10,7 @@ namespace WebApplication2.Models
 {
     public class Crew
     {
+        //κάνουμε μια νέα σύνδεση και δημιουργολυμε μια λίστα όπου θα αποθηκεύσουμε τα δεδομένα
         SqlConnection con = new SqlConnection();
         List<Crew> CrewList = new List<Crew>();
 
@@ -25,32 +26,26 @@ namespace WebApplication2.Models
         [Required(ErrorMessage = "Required")]
         [RegularExpression(@"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$", ErrorMessage = "Must be valid email")]
         public string email { get; set; }
-
-       
         public string info { get; set; }
-
-        
         public string nameofpic { get; set; }
         
         [Required(ErrorMessage = "Required")]
         public HttpPostedFileBase picture { get; set; }
-
-
         string constr = ConfigurationManager.ConnectionStrings["Contacts"].ConnectionString;
         Crew p = null;
 
+
+        //εδώ κάνουμε το έρωτημα sql και μετά αποθηκεύουμε αυτά που θέλουμε
+
         public List<Crew> IndexDisplay()
         {
-
             SqlConnection con = new SqlConnection(constr);
             con.Open();
-
             using (con)
             {
                 SqlCommand cmd = new SqlCommand("Select * from Crew ", con);
                 SqlDataReader rd = cmd.ExecuteReader();
-
-                while (rd.Read())
+                 while (rd.Read())
                 {
                     p = new Crew();
                     p.fname = Convert.ToString(rd.GetSqlValue(1));
@@ -60,12 +55,9 @@ namespace WebApplication2.Models
                     p.info = Convert.ToString(rd.GetSqlValue(5));
                     p.nameofpic = Convert.ToString(rd.GetSqlValue(6));
                     CrewList.Add(p);
-
-                }
+                    }
             }
-
-
-            return CrewList;
+                return CrewList;
 
 
 

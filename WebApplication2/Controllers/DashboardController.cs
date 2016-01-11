@@ -77,9 +77,7 @@ namespace WebApplication2.Controllers
         {
             string actualPath = Server.MapPath("~/App_Data/uploads/" + id);
             return File(actualPath, "application/pdf", Server.UrlEncode(id));
-
         }
-
         public ActionResult DeleteApplier(ContactModel f)
         {
             string fullPath = Request.MapPath("~/App_Data/uploads/" + f.nameofcv);
@@ -87,22 +85,20 @@ namespace WebApplication2.Controllers
             D.Open();
             int i = D.DataDelete("DELETE FROM table_form WHERE  Email= '" + f.Email + "' ");
             D.Close();
-
-            if (i > 0)
-            {
-                ModelState.AddModelError("Success", "Save Success");
-            }
+             if (i > 0)
+            {ModelState.AddModelError("Success", "Save Success");}
             else
-            {
-                ModelState.AddModelError("Error", "Save Error");
-            }
+            {ModelState.AddModelError("Error", "Save Error");}
             return RedirectToAction("Jobs", "Dashboard");
         }
 
         public ActionResult DeleteMap(Map f)
         {
+            //ανοίγουμε σύνδεση
             D.Open();
+            //κάνουμε ερώτημα δηλαδη στη περίπτωσή μας διαγραφή από τη βάση
             int i = D.DataDelete("DELETE FROM MapTable WHERE  Latitude= '" + f.Latitude + "' AND  Longitude='" + f.Longitude + "' ");
+            //κλείνουμε σύνδεση
             D.Close();
 
             if (i > 0)
@@ -113,7 +109,18 @@ namespace WebApplication2.Controllers
             {
                 ModelState.AddModelError("Error", "Save Error");
             }
+            //μεταφερόμαστε κεί που θέλουμε
             return RedirectToAction("Map", "Dashboard");
+        }
+         public ActionResult Map()
+        {
+
+            //παράτψ καλούμε τη λίστα απο το μοντέλο με τα στοιχεία της βάσης
+            Map p = new Map();
+            List<Map> Li = new List<Map>();
+            Li = p.MapDisplay();
+            ViewData["MapDisplay"] = Li;
+            return View();
         }
 
         public ActionResult DeleteJob(postjob f)
@@ -170,14 +177,6 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Crew", "Dashboard");
         }
 
-        public ActionResult Map()
-        {
-            Map p = new Map();
-            List<Map> Li = new List<Map>();
-            Li = p.MapDisplay();
-            ViewData["MapDisplay"] = Li;
-            return View();
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -185,6 +184,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
+                //προσθέτουμε στη βάση τα νέα στοιχεία 
                 D.Open();
                 int j = D.DataInsert("INSERT INTO MapTable(Name,Latitude,Longitude,Description) VALUES ('" + f.Name + "','" + f.Latitude + "','" + f.Longitude + "','" + f.Description + "')");
 
@@ -220,38 +220,24 @@ namespace WebApplication2.Controllers
 
             if (ModelState.IsValid)
             {
-                //D.Open();
-                //bool check = D.DataSearch("SELECT * FROM table_form WHERE Email = '" + f.Email + "' ");
-                //D.Close();
-                //if (check == false)
-                //{
-
+                
                 if (Request.Files.Count > 0)
                 {
                     var file = Request.Files[0];
-
-                    if (file != null && file.ContentLength > 0)
+                     if (file != null && file.ContentLength > 0)
                     {
+                        //αποθήκευση φωτογραφίας στον φάκελο
                         f.nameofpic = Path.GetFileName(file.FileName);
                         var path = Path.Combine(Server.MapPath("~/ImagesCrew"), f.nameofpic);
                         file.SaveAs(path);
-                        
-
-
+                        //ανοιγμα σύνδεσης με  βδ και καταχώρηση εγραφή
                         D.Open();
                             int i = D.DataInsert("INSERT INTO Crew(First_Name,Last_name,Job,Email,Info,ImageName) VALUES ('" + f.fname + "','" + f.sname + "','" + f.job + "','" + f.email + "','" + f.info + "','" + f.nameofpic + "')");
-
-                            if (i > 0)
-                            {
-                                ModelState.AddModelError("Success", "Save Success");
-                            }
+                             if (i > 0)
+                            { ModelState.AddModelError("Success", "Save Success");}
                             else
-                            {
-                                ModelState.AddModelError("Error", "Save Error");
-                            }
-
-                            //}
-
+                            { ModelState.AddModelError("Error", "Save Error");}
+                            //κλείσιμο σύνδεση με βδ
                             D.Close();
                         }
                     

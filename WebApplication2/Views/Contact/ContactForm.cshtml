@@ -116,6 +116,8 @@
                         <label for="file">Upload your Cv:</label>
                         @Html.TextBoxFor(m => m.file, new { type = "file", name = "file", id = "fileupload", @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.file)<br />
+
+                        //Το label σε αυ΄τη τη περίπτωση είναι ένα κρυφό πεδίο το οποίο το χρησιμοποούμε για το  validation το οποίο θα γίνει με jquery
                         <label id="fileStatus" Text="" class="error"></label><br />
                         <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-success" />
 
@@ -140,22 +142,22 @@
 
             $("#fileupload").change(function () {
 
-                // Get the file upload control file extension
+                // βρίσκουμε ρο αρχέιο 
                 var ext = $(this).val().split('.').pop().toLowerCase();
 
-                // Create array with the files extensions to upload
+                // αρχείο πίνακα για να δώσουμε τα είδη αρχείου που δεχόμαστε
                 var fileListToUpload = new Array('pdf', 'txt', 'doc', 'docx', 'xls', 'xlsx');
 
-                //Check the file extension is in the array.
+                //έλεγχος του αρχείου πίνακα
                 var isValidFile = $.inArray(ext, fileListToUpload);
 
-                // isValidFile gets the value -1 if the file extension is not in the list.
+                // λειτουργία άν δεν είναι σωστό 
                 if (isValidFile == -1) {
                     ShowMessage('Please select a valid file of type pdf/txt/doc/docx/xls/xlsx.', 'error');
                     $(this).replaceWith($(this).val('').clone(true));
                 }
                 else {
-                    // Restrict the file size to 10 MB.
+                    // εδώ θέτουμε το μέγιστο μέγεθος του αρχείου
                     if ($(this).get(0).files[0].size > (1024 * 1024 * 10)) {
                         ShowMessage('File size should not exceed 10MB.', 'error');
                         $(this).replaceWith($(this).val('').clone(true));

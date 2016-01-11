@@ -1,8 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -11,14 +10,7 @@
     @Styles.Render("~/Content/themes/base/css")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery")
-    
-    
-    @**<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css"
-        rel="stylesheet" type="text/css" />*@
-    @*@Scripts.Render("~/bundles/jqueryui")*@
-    @*<script src="~/Scripts/jquery-2.1.4.min.js"></script>*@
-
-
+ 
     <script type="text/javascript">
         $(document).ready(function () {
             $(".dropdown").hover(
@@ -60,14 +52,15 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav ">
                             <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Home, "Index", "Home")</li>
-                            <li class="dropdown">
+                            <!--Το actionlink μας δίνει τη δυνατότητα να αναζητάμε άλλα view ενδιάμεσο των Controllers  -->
+                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle">@WebApplication2.Resources.HomeText.News <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink(WebApplication2.Resources.HomeText.About, "About", "Home")</li>
-                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li> <!--den ekana view -->
-                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Works, "Works", "Home")</li><!--den ekana view -->
-                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Philosophy, "Philosophy", "Home")</li><!--den ekana view -->
-                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "History", "Home")</li><!--den ekana view -->
+                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Partners, "Partners", "Home")</li> 
+                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Works, "Works", "Home")</li>
+                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.Philosophy, "Philosophy", "Home")</li>
+                                    <li>@Html.ActionLink(WebApplication2.Resources.HomeText.History, "History", "Home")</li>
                                 </ul>
                             </li>
                             
@@ -82,12 +75,8 @@
                             {
                              @*<li>@Html.ActionLink("Logout", "Logout", "Admin")</li>*@
                                 @Html.Partial("_LoginPartial")
-                               
-
-                            }
-
-                        
-                    </div>
+                           }
+</div>
                 </div>
             </div>
         </div>

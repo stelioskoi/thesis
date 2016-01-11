@@ -50,23 +50,18 @@
             });
 
             function Initialize() {
-
-                // Google has tweaked their interface somewhat - this tells the api to use that new UI
                 google.maps.visualRefresh = true;
                 var Greece = new google.maps.LatLng(39.074208,  21.824312);
-
-                // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+                // εδώ θέτουμε που θα μας δείχνει ο χάρτης αρχικά χωρίς να προσθέτουμε τίποτα
                 var mapOptions = {
                     zoom: 7,
                     center: Greece,
                     mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP,
-                    
                 };
-
-                // This makes the div with id "map_canvas" a google map
+                  // Εδώ μετατρέπετε το div σε χάρτη 
                 var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-                // This shows adding a simple pin "marker" - 
+                // τοποθετούμε ένα απλό marker
                 var myLatlng = new google.maps.LatLng(39.074208, 21.824312);
 
                 var marker = new google.maps.Marker({
@@ -74,19 +69,11 @@
                     map: map,
                     title: 'Tate Gallery'
                 });
-
-                // You can make markers different colors...  google it up!
                 marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
-
-                // a sample list of JSON encoded data of places to visit in Liverpool, UK
-                // you can either make up a JSON list server side, or call it from a controller using JSONResult
-
+                //παίρνουμε δυναμικά στοιχεία από τη βάση δεδομένων και τα το ποθετούμε σε Json
                 var data = @Html.Raw(Json.Encode(Model));
-                   
-                 // static  { "PlaceName": "My house", "OpeningHours": "unlimited", "GeoLong": "24.418074", "GeoLat": "40.939261", "Comments": "Here lives the myth" }, ];
-
-
-                // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
+                
+                // Χρησιμοποιώντας την  Jquery τοποθετούμε τα Json στοιχεια/καρφίτσες στο πίνακα
                 $.each(data, function (i, item) {
                          var marker = new google.maps.Marker({
                          'position': new google.maps.LatLng(item.Latitude, item.Longitude),
@@ -94,16 +81,15 @@
                          'title': item.Name
                     });
 
-                     // Make the marker-pin blue!
                          marker.setIcon('http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Push-Pin-1-Pink-icon.png')
                   
-                    // put in some information about each json object - in this case, the opening hours.
+                    // πληροφορίες τις κάθε καρφίτσας
                      
                      var infowindow = new google.maps.InfoWindow({
                          content: "<h2>" + item.Name + "</h2 >" + "<div>" + item.Description+ "</div>" 
                     });
 
-                    // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
+                    // εμφανίζουμε pop-up παράθυρο σε κάθε καρφίτσα με τις πληροφορίες
                     google.maps.event.addListener(marker, 'click', function () {
                      infowindow.open(map, marker);
                  });

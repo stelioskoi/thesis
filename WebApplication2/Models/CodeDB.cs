@@ -6,20 +6,17 @@ using System.Data.SqlClient;
 using System.Web.Configuration;
 using System.Data;
 using System.Text;
-
 namespace WebApplication2.Models
 {
     public class CodeDB
-    {
-        public SqlConnection con;
+    {    public SqlConnection con;
 
-        public bool Open(string Connection = "Contacts")
+        //ανοίγουμε τη σύνδεση μεταξή της βάσεις και της ιστοσελίδα μέσω του Connection string
+            public bool Open(string Connection = "Contacts")
         {
             con = new SqlConnection(@WebConfigurationManager.ConnectionStrings[Connection].ToString());
-        //checking for sql connection
-           try
-            {
-                bool b = true;
+        try
+            { bool b = true;
                 if (con.State.ToString() != "Open")
                 {
                     con.Open();
@@ -31,9 +28,8 @@ namespace WebApplication2.Models
                 return false;
             }
         }
-
-
-        public bool Close()
+       // κλείνουμε την σύνδεση 
+public bool Close()
         {
             try
             {
@@ -47,6 +43,7 @@ namespace WebApplication2.Models
 
         }
 
+        //εντολές για διάφορα καταστάσεις που θα χρειαστούμε  .
         public int ToInt(object s)
         {
 
@@ -82,8 +79,6 @@ namespace WebApplication2.Models
             }
         }
 
-       
-
         public int DataInsert(string sql)
         { int LastID = 0;
             string query = sql  /*";SELECT @@Identity;"*/;
@@ -103,7 +98,6 @@ namespace WebApplication2.Models
                 return 0;
             }
         }
-
 
         public bool DataSearch(string sql)
         {

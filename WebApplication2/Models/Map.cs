@@ -19,8 +19,7 @@ namespace WebApplication2.Models
         public string Latitude { get; set; }
         [Required(ErrorMessage = "Required")]
         public string Longitude { get; set; }
-
-        [AllowHtml]
+         [AllowHtml]
         [Required(ErrorMessage = "Required")]
         public string Description { get; set; }
 

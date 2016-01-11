@@ -7,22 +7,17 @@ using System.Threading.Tasks;
 
 namespace WebApplication2.DAL
 {
-    //idisposable Provides a mechanism for releasing unmanaged resources
+    //idisposable παρέχει ένα μηχανισμό για την απελευθέρωση διαχειριζόμενων πόρων
     public interface IBlogRepository :IDisposable
     {
 
         IList<Post> GetPosts();
-
         IList<Category> GetPostCategories(Post post);
-
         IList<Tag> GetPostTags(Post post);
-
         IList<PostImage> GetPostImages(Post post);
-
         IList<Tag> GetTags();
         IList<Category> GetCategories();
-
-        Post GetPostById(string postid);
+Post GetPostById(string postid);
         string GetPostIdBySlug(string slug);
        
         void AddImageToPost(string postid, string Imagename);
